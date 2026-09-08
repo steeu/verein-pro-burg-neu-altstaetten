@@ -83,6 +83,12 @@ Bestehende Navigation, in dieser Reihenfolge:
 | Impressionen | `/impressionen/` | übernehmen |
 | Kontakt | `/kontakt/` | übernehmen |
 
+> Die Navigation liegt im Neuaufbau als **horizontale Header-Leiste** oben
+> (früher eine Seitenleiste links); unter 860 px klappt sie zum
+> Hamburger-Menü. Im Menü sind drei Labels gekürzt — «Projekte», «Wer wir
+> sind», «Geschichte» —, die vollen Seitentitel (`data-title`, `<title>`,
+> Eyebrow/H2 der Seite) bleiben unverändert.
+
 > **Entscheid:** Impressum (`/about/`) und Datenschutz (`/j/privacy`) sind im
 > Neuaufbau bewusst **nicht** übernommen — auf Wunsch entfernt. Die alte
 > Impressum-Seite war ohnehin inhaltlich leer (nur Jimdo-Boilerplate), die
