@@ -210,21 +210,18 @@
 
   .plaque{
     margin-top:2.2rem;
-    background:var(--surface-raised);
-    border:1px solid var(--border);
+    width:100%;
+    background:var(--brass-tint);
+    border:1px solid var(--brass);
+    border-left:5px solid var(--brass);
     border-radius:10px;
-    padding:1.3rem 1.5rem;
+    padding:1.5rem 1.7rem;
     box-shadow:var(--shadow);
-    display:flex;
-    gap:1.1rem;
-    align-items:flex-start;
-    max-width:480px;
   }
-  .plaque-seal{ flex:0 0 auto; }
-  .plaque .eyebrow{ margin-bottom:.25rem; }
-  .plaque-date{ font-family:"Fraunces",serif; font-weight:700; font-size:1.2rem; }
-  .plaque-place{ display:block; margin-top:.15rem; color:var(--text-muted); font-size:.92rem; }
-  .plaque-note{ display:block; margin-top:.6rem; font-size:.76rem; color:var(--text-muted); }
+  .plaque .eyebrow{ display:block; margin-bottom:.35rem; }
+  .plaque-date{ display:block; font-family:"Fraunces",serif; font-weight:700; font-size:clamp(1.4rem, 1.2rem + 1.1vw, 1.9rem); line-height:1.15; }
+  .plaque-place{ display:block; margin-top:.3rem; color:var(--text-muted); font-size:.95rem; }
+  .plaque-note{ display:block; margin-top:.8rem; font-size:.76rem; color:var(--text-muted); }
 
   .teaser-row{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2.4rem; }
   .teaser{
@@ -495,15 +492,10 @@
       <img class="hero-photo" src="bilder/hero.jpg" alt="Die Burg Neu-Altstätten in Lüchingen">
 
       <div class="plaque">
-        <span class="plaque-seal" aria-hidden="true">
-          <svg width="30" height="30" viewBox="0 0 30 30"><circle cx="15" cy="15" r="14" fill="none" stroke="var(--wine)" stroke-width="1.4"/><path d="M15 6l2.4 5.6 6 .5-4.6 4 1.4 5.9-5.2-3.2-5.2 3.2 1.4-5.9-4.6-4 6-.5Z" fill="var(--wine)" opacity=".85"/></svg>
-        </span>
-        <div>
-          <span class="eyebrow">Nächste Burgversammlung</span>
-          <span class="plaque-date" id="nextVersammlung">wird berechnet …</span>
-          <span class="plaque-place">Torkel auf der Burg, 19.30 Uhr</span>
-          <span class="plaque-note">Datum wird automatisch nach der Regel «jeweils 2. Freitag im August» berechnet – hier ist nichts von Hand nachzuführen.</span>
-        </div>
+        <span class="eyebrow">Nächste Burgversammlung</span>
+        <span class="plaque-date" id="nextVersammlung">wird berechnet …</span>
+        <span class="plaque-place">Torkel auf der Burg, 19.30 Uhr</span>
+        <span class="plaque-note">Datum wird automatisch nach der Regel «jeweils 2. Freitag im August» berechnet – hier ist nichts von Hand nachzuführen.</span>
       </div>
 
       <div class="teaser-row">
