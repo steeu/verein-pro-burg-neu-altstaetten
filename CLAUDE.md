@@ -510,9 +510,11 @@ Datei lässt sich direkt im Browser öffnen und genauso direkt über GitHub
 Pages ausliefern, weil Hash-Routing ohne Server-Konfiguration funktioniert.
 
 **Favicon:** stark vereinfachte Silhouette der Burg Neu-Altstätten — Wohnturm
-mit steilem Giebel, kleines Giebelfenster, 2×2 Fenster, rechts der niedrige
-Torkel-Anbau. **Nur zwei Farben:** dunkler Grund `#241D14` (auch die
-ausgesparten Fenster), Messing `#C9A24B` (die ganze Burg).
+mit steilem Giebel, kleines Giebelfenster, unregelmässig verteilte Fenster
+(schmale Reihe unter dem Dach, grössere in der Mitte, kleinere unten – nicht
+im Raster), rechts der niedrige Torkel-Anbau. **Nur zwei Farben:** dunkler
+Grund `#241D14` (auch die ausgesparten Fenster), Messing `#C9A24B` (die ganze
+Burg).
 Quelle ist [`favicon.svg`](favicon.svg); daraus abgeleitet
 [`favicon.ico`](favicon.ico) (16/32/48 px, Fallback für ältere Browser) und
 [`apple-touch-icon.png`](apple-touch-icon.png) (180 px, iOS-Homescreen).

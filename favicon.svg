@@ -8,12 +8,19 @@
     <path d="M4.4 12 14 2 23.6 12Z"/>
   </g>
 
-  <!-- Öffnungen (ausgespart) -->
+  <!-- Fensteröffnungen: unregelmässig platziert wie am Bau -->
   <g fill="#241D14">
-    <rect x="12.6" y="4.4" width="2.8" height="2.8"/>
-    <rect x="9.4" y="14.4" width="2.9" height="3.4"/>
-    <rect x="14.5" y="14.4" width="2.9" height="3.4"/>
-    <rect x="9.4" y="19.4" width="2.9" height="3.4"/>
-    <rect x="14.5" y="19.4" width="2.9" height="3.4"/>
+    <!-- Giebelfenster nahe dem First -->
+    <rect x="12.9" y="4.2" width="2.5" height="2.5"/>
+    <!-- schmale Reihe unter dem Dach -->
+    <rect x="8.6" y="13.5" width="1.9" height="2"/>
+    <rect x="11.3" y="13.4" width="1.9" height="2"/>
+    <rect x="14" y="13.2" width="1.9" height="2.2"/>
+    <!-- mittlere Fenster, ungleich hoch -->
+    <rect x="8.9" y="17.3" width="2.7" height="3.3"/>
+    <rect x="14.7" y="16.6" width="3" height="3.6"/>
+    <!-- untere Fenster, kleiner und versetzt -->
+    <rect x="9.4" y="22" width="2.2" height="2.6"/>
+    <rect x="14.4" y="22.4" width="1.9" height="2.3"/>
   </g>
 </svg>
