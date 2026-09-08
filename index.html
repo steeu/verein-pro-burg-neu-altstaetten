@@ -446,13 +446,13 @@
   }
 
   /* ============ Gallery ============ */
-  .gallery{ columns:3 14rem; column-gap:.8rem; margin-top:1.5rem; }
+  .gallery{ display:flex; align-items:flex-start; gap:.7rem; margin-top:1.5rem; }
+  .gallery-col{ flex:1 1 0; min-width:0; display:flex; flex-direction:column; gap:.7rem; }
   .gallery img{
-    display:block; width:100%; break-inside:avoid; margin-bottom:.8rem;
+    display:block; width:100%;
     border-radius:10px;
     box-shadow:var(--photo-shadow);
   }
-  @media (max-width:640px){ .gallery{ columns:2 10rem; } }
 
   /* ============ Kontakt ============ */
   .kv-list{ margin-top:1.4rem; display:flex; flex-direction:column; gap:.9rem; max-width:52ch; }
@@ -804,14 +804,30 @@
   // Impressionen: Galerie aus den 31 archivierten Fotos aufbauen
   var gallery = document.getElementById('impressionenGallery');
   if (gallery){
-    for (var i = 1; i <= 31; i++){
-      var n = (i < 10 ? '0' : '') + i;
-      var img = document.createElement('img');
-      img.src = 'bilder/impressionen/' + n + '.jpg';
-      img.loading = 'lazy';
-      img.alt = 'Impression rund um die Burg, Foto ' + n;
-      gallery.appendChild(img);
+    var GALLERY_TOTAL = 31;
+    function buildGallery(cols){
+      gallery.textContent = '';
+      var columns = [];
+      for (var c = 0; c < cols; c++){
+        var col = document.createElement('div');
+        col.className = 'gallery-col';
+        gallery.appendChild(col);
+        columns.push(col);
+      }
+      for (var i = 1; i <= GALLERY_TOTAL; i++){
+        var n = (i < 10 ? '0' : '') + i;
+        var img = document.createElement('img');
+        img.src = 'bilder/impressionen/' + n + '.jpg';
+        img.loading = 'lazy';
+        img.alt = 'Impression rund um die Burg, Foto ' + n;
+        columns[(i - 1) % cols].appendChild(img);
+      }
     }
+    var galleryMQ = window.matchMedia('(max-width: 640px)');
+    function syncGallery(){ buildGallery(galleryMQ.matches ? 2 : 3); }
+    syncGallery();
+    if (galleryMQ.addEventListener) galleryMQ.addEventListener('change', syncGallery);
+    else if (galleryMQ.addListener) galleryMQ.addListener(syncGallery);
   }
 
 })();
