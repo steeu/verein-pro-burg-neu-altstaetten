@@ -387,10 +387,20 @@
 
   /* ============ Era strip (Geschichte) ============ */
   .era-strip{ display:flex; overflow-x:auto; gap:0; margin:1.6rem 0 2rem; border-top:2px solid var(--border); border-bottom:2px solid var(--border); }
-  .era{ flex:1 0 7.5rem; padding:.9rem 1rem; border-right:1px solid var(--border); }
+  .era{ flex:1 0 9rem; padding:1rem 1.2rem; border-right:1px solid var(--border); }
   .era:last-child{ border-right:none; }
-  .era-year{ font-family:"Fraunces",serif; font-weight:700; color:var(--brass); font-size:1rem; }
-  .era-what{ font-size:.78rem; color:var(--text-muted); margin-top:.15rem; }
+  .era-year{ display:block; font-family:"Fraunces",serif; font-weight:700; color:var(--brass); font-size:1.1rem; }
+  .era-what{ display:block; font-size:.8rem; line-height:1.4; color:var(--text-muted); margin-top:.4rem; }
+  @media (max-width:600px){
+    .era-strip{ display:block; overflow:visible; }
+    .era{
+      display:grid; grid-template-columns:5rem 1fr; gap:.9rem; align-items:baseline;
+      border-right:none; padding:.7rem 0;
+    }
+    .era + .era{ border-top:1px solid var(--border); }
+    .era-year{ font-size:1rem; }
+    .era-what{ margin-top:0; }
+  }
 
   article.history p{ margin-top:1rem; max-width:66ch; }
   article.history p:first-child{ margin-top:0; }
