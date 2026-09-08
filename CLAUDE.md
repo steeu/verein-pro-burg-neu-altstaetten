@@ -515,6 +515,14 @@ und allen Bildern unter [`bilder/`](bilder/). Kein Build-Schritt nötig — die
 Datei lässt sich direkt im Browser öffnen und genauso direkt über GitHub
 Pages ausliefern, weil Hash-Routing ohne Server-Konfiguration funktioniert.
 
+**Header:** horizontale Navileiste oben, in **beiden Themes dunkel**
+(Burgstein, `--header-*`-Tokens) — heller Off-White-Text, aktiver Link in
+hellem Messing mit dezenter Pille; Hamburger-Menü und mobiles Dropdown
+ebenfalls dunkel. Im Dark Mode ist der Header noch etwas dunkler als der
+Body, damit er als eigene Leiste lesbar bleibt. `theme-color` = `#211812`.
+Alle Inhaltsseiten laufen auf einheitliche `--content-max` (820 px), der
+Footer zentriert bündig darunter.
+
 **Favicon:** stark vereinfachte Silhouette der Burg Neu-Altstätten — Wohnturm
 mit steilem Giebel, kleines Giebelfenster, unregelmässig verteilte Fenster
 (schmale Reihe unter dem Dach, grössere in der Mitte, kleinere unten – nicht
