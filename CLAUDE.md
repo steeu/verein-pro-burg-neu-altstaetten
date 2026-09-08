@@ -62,7 +62,8 @@ nachrangig.
   Ritter!»). Diesen Charakter beim Umschreiben erhalten — nicht in
   Behördendeutsch glätten.
 - **Claim der Seite:** «Damit die Burg auch in 500 Jahren noch so gut
-  aussieht.»
+  aussieht.» — steht als hervorgehobenes Zitat (`<p class="pull">`) im
+  Fliesstext von «Wer wir sind – Ziele», nicht mehr in der Navigation.
 - **Leitspruch / H1 der Startseite:** «Alter schützt vor Liebe nicht, aber
   Liebe vor dem Altern.»
 
