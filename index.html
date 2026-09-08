@@ -177,9 +177,9 @@
     gap:.5rem;
     font-weight:700;
     font-size:1rem;
-    padding:.75rem 1.4rem;
-    border-radius:6px;
-    border:1px solid var(--brass);
+    padding:.8rem 1.5rem;
+    border-radius:8px;
+    border:1px solid transparent;
     background:var(--text);
     color:var(--surface-raised);
     text-decoration:none;
@@ -196,6 +196,10 @@
   .btn-ghost:hover{ background:var(--surface-raised); border-color:var(--brass); color:var(--text); }
   .btn-block{ width:100%; justify-content:center; }
   .btn-row{ display:flex; flex-wrap:wrap; gap:.75rem; align-items:center; margin-top:1.3rem; }
+  @media (max-width:600px){
+    .btn-row{ gap:.6rem; }
+    .btn-row .btn{ width:100%; justify-content:center; }
+  }
 
   /* ============ Home ============ */
   .hero h1{ margin-bottom:1rem; }
