@@ -305,18 +305,18 @@
   .wall-stat span{ display:block; margin-top:.4rem; font-size:.82rem; color:var(--text-muted); }
 
   .wall{
+    --pad:2rem;        /* left space reserved for the timeline */
+    --spine:.6rem;     /* x-position of the spine, from .wall's left edge */
+    --gap:.9rem;       /* must match the flex gap below */
+    --dot-y:50%;       /* y-position of each dot, from its card's top */
     position:relative;
     margin-top:1.8rem;
-    padding-left:1.9rem;
-    display:flex; flex-direction:column; gap:.9rem;
-  }
-  .wall::before{
-    content:""; position:absolute;
-    left:5px; top:.9rem; bottom:.9rem; width:2px;
-    background:linear-gradient(180deg, var(--brass), var(--border));
+    padding-left:var(--pad);
+    display:flex; flex-direction:column; gap:var(--gap);
   }
   .course{
     position:relative;
+    z-index:0;
     display:grid;
     grid-template-columns:7rem 1fr auto;
     grid-template-rows:auto auto;
@@ -328,12 +328,26 @@
     padding:.9rem 1.4rem .9rem .9rem;
     transition:border-color .15s ease, box-shadow .15s ease;
   }
+  /* spine segment: runs down the left gutter, dot-to-dot */
+  .course::after{
+    content:""; position:absolute;
+    left:calc(var(--spine) - var(--pad) - 1px);
+    transform:translateX(-50%);
+    top:0; bottom:calc(-1 * var(--gap));
+    width:2px; z-index:1;
+    background:linear-gradient(180deg, var(--brass), var(--border));
+  }
+  .course:first-child::after{ top:var(--dot-y); }
+  .course:last-child::after{ top:0; bottom:auto; height:var(--dot-y); }
+  /* dot: sits on the spine */
   .course::before{
     content:""; position:absolute;
-    left:-1.9rem; top:50%;
-    width:13px; height:13px; margin-top:-6.5px; margin-left:-5.5px;
+    left:calc(var(--spine) - var(--pad) - 1px);
+    top:var(--dot-y);
+    transform:translate(-50%,-50%);
+    width:12px; height:12px; z-index:2;
     border-radius:50%; background:var(--brass);
-    box-shadow:0 0 0 4px var(--surface);
+    box-shadow:0 0 0 3px var(--surface);
   }
   .course:hover{ border-color:var(--brass); box-shadow:var(--shadow); }
   .course-thumb{
@@ -354,7 +368,7 @@
     font-variant-numeric:tabular-nums; white-space:nowrap;
   }
   @media (max-width:600px){
-    .wall{ padding-left:1.4rem; }
+    .wall{ --pad:1.7rem; --dot-y:2.65rem; }  /* dot-y = card padding-top + half the thumb */
     .course{
       grid-template-columns:3.6rem 1fr;
       grid-template-rows:auto auto auto;
@@ -362,7 +376,6 @@
       padding:.85rem 1rem;
       align-items:start;
     }
-    .course::before{ left:-1.4rem; top:1.3rem; }
     .course-thumb{ grid-column:1; grid-row:1 / 4; width:3.6rem; height:3.6rem; align-self:start; }
     .course-year{ grid-column:2; grid-row:1; font-size:1.25rem; }
     .course > span:not([class]){ grid-column:2; grid-row:2; }
