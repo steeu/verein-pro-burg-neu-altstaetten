@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Vereinigung Pro Burg Neu-Altstätten: Geschichte, Projekte und Mitgliedschaft rund um die Burg Neu-Altstätten in Lüchingen.">
+<title>Burgverein Lüchinga</title>
+<style>
+  /* ============ Fonts ============ */
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap');
+
+  /* ============ Tokens — light (default, un-stamped root) ============ */
+  :root{
+    --surface:#EDE6D5;
+    --surface-raised:#F8F3E8;
+    --surface-sunken:#E3DAC3;
+    --text:#241D14;
+    --text-muted:#5B5142;
+    --brass:#8C6A22;
+    --brass-strong:#B78A2E;
+    --brass-tint:rgba(140,106,34,0.12);
+    --wine:#7A2333;
+    --border:#D9CDB0;
+    --focus:#2A6FDB;
+    --shadow:0 1px 2px rgba(36,29,20,0.08), 0 6px 18px rgba(36,29,20,0.07);
+    --logo-filter:none;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --surface:#1E1710;
+      --surface-raised:#2A2116;
+      --surface-sunken:#171209;
+      --text:#EFE6D6;
+      --text-muted:#B9AD92;
+      --brass:#D2A94A;
+      --brass-strong:#8C6A22;
+      --brass-tint:rgba(210,169,74,0.16);
+      --wine:#D98A96;
+      --border:#3E3122;
+      --focus:#6FA8FF;
+      --shadow:0 1px 2px rgba(0,0,0,0.35), 0 8px 24px rgba(0,0,0,0.35);
+      --logo-filter:invert(1);
+    }
+  }
+  :root[data-theme="dark"]{
+    --surface:#1E1710;
+    --surface-raised:#2A2116;
+    --surface-sunken:#171209;
+    --text:#EFE6D6;
+    --text-muted:#B9AD92;
+    --brass:#D2A94A;
+    --brass-strong:#8C6A22;
+    --brass-tint:rgba(210,169,74,0.16);
+    --wine:#D98A96;
+    --border:#3E3122;
+    --focus:#6FA8FF;
+    --shadow:0 1px 2px rgba(0,0,0,0.35), 0 8px 24px rgba(0,0,0,0.35);
+    --logo-filter:invert(1);
+  }
+
+  /* ============ Base ============ */
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ color-scheme:light dark; }
+  body{
+    margin:0;
+    background:var(--surface);
+    color:var(--text);
+    font-family:"Atkinson Hyperlegible", "Segoe UI", Arial, sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:"Fraunces", Georgia, "Times New Roman", serif;
+    font-weight:700;
+    line-height:1.12;
+    text-wrap:balance;
+    color:var(--text);
+    margin:0;
+  }
+  h1{ font-size:clamp(2.1rem, 1.6rem + 2.2vw, 3.4rem); font-weight:900; }
+  h2{ font-size:clamp(1.5rem, 1.3rem + 1vw, 2.1rem); }
+  h3{ font-size:1.15rem; font-weight:700; }
+  p{ margin:0; }
+  a{ color:inherit; }
+  .link{
+    color:var(--text);
+    text-decoration-line:underline;
+    text-decoration-color:var(--brass);
+    text-decoration-thickness:2px;
+    text-underline-offset:3px;
+  }
+  .link:hover{ color:var(--brass); }
+  ul,ol{ margin:0; padding:0; list-style:none; }
+  button{ font-family:inherit; }
+  img{ max-width:100%; }
+
+  .eyebrow{
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    color:var(--brass);
+  }
+
+  :focus-visible{ outline:3px solid var(--focus); outline-offset:3px; border-radius:3px; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.01ms !important; transition-duration:.01ms !important; }
+  }
+
+  /* ============ App shell ============ */
+  .app{
+    display:flex;
+    min-height:100vh;
+    max-width:1280px;
+    margin:0 auto;
+  }
+
+  /* ---- Sidebar / nav ---- */
+  .site-nav{
+    flex:0 0 264px;
+    padding:2rem 1.5rem 2rem 1.75rem;
+    border-right:1px solid var(--border);
+    display:flex;
+    flex-direction:column;
+    gap:2rem;
+    position:sticky;
+    top:0;
+    align-self:flex-start;
+    height:100vh;
+    overflow-y:auto;
+  }
+  .brand{ display:flex; align-items:center; }
+  .brand-logo{ width:100%; max-width:190px; height:auto; display:block; filter:var(--logo-filter, none); }
+
+  .nav-group{ display:flex; flex-direction:column; gap:.15rem; }
+  .nav-group + .nav-group{ margin-top:.25rem; padding-top:1rem; border-top:1px solid var(--border); }
+  .nav-link{
+    display:block;
+    padding:.5rem .6rem;
+    border-radius:5px;
+    font-weight:700;
+    font-size:.95rem;
+    color:var(--text-muted);
+    text-decoration:none;
+    border-left:3px solid transparent;
+  }
+  .nav-link:hover{ background:var(--surface-raised); color:var(--text); }
+  .nav-link[aria-current="page"]{ color:var(--text); border-left-color:var(--brass); background:var(--surface-raised); }
+  .nav-secondary .nav-link{ font-size:.82rem; font-weight:400; }
+
+  .nav-foot{ margin-top:auto; font-size:.75rem; color:var(--text-muted); line-height:1.5; }
+
+  .nav-toggle{ display:none; }
+
+  /* ---- Main ---- */
+  main{ flex:1 1 auto; min-width:0; padding:2.75rem clamp(1.25rem,4vw,4rem) 5rem; }
+  .page{ display:none; max-width:760px; }
+  .page.is-active{ display:block; }
+  .page-wide{ max-width:920px; }
+
+  .page-head{ margin-bottom:2.2rem; }
+  .page-head .eyebrow{ display:block; margin-bottom:.5rem; }
+
+  .lede{ font-size:1.15rem; color:var(--text-muted); max-width:62ch; }
+
+  section + section{ margin-top:2.75rem; }
+
+  /* ============ Buttons ============ */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    font-weight:700;
+    font-size:1rem;
+    padding:.75rem 1.4rem;
+    border-radius:6px;
+    border:1px solid var(--brass);
+    background:var(--text);
+    color:var(--surface-raised);
+    text-decoration:none;
+    cursor:pointer;
+    transition:background .15s ease, color .15s ease, transform .1s ease;
+  }
+  .btn:hover{ background:var(--brass-strong); color:var(--text); }
+  .btn:active{ transform:translateY(1px); }
+  .btn-ghost{
+    background:transparent;
+    color:var(--text);
+    border:1px solid var(--border);
+  }
+  .btn-ghost:hover{ background:var(--surface-raised); border-color:var(--brass); color:var(--text); }
+  .btn-block{ width:100%; justify-content:center; }
+  .btn-row{ display:flex; flex-wrap:wrap; gap:.75rem; align-items:center; margin-top:1.3rem; }
+
+  /* ============ Home ============ */
+  .hero h1{ margin-bottom:1rem; }
+  .hero{ padding-bottom:.5rem; }
+  .hero-photo{
+    display:block;
+    width:100%;
+    max-height:360px;
+    object-fit:cover;
+    border-radius:10px;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    margin-top:1.8rem;
+  }
+
+  .plaque{
+    margin-top:2.2rem;
+    background:var(--surface-raised);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:1.3rem 1.5rem;
+    box-shadow:var(--shadow);
+    display:flex;
+    gap:1.1rem;
+    align-items:flex-start;
+    max-width:480px;
+  }
+  .plaque-seal{ flex:0 0 auto; }
+  .plaque .eyebrow{ margin-bottom:.25rem; }
+  .plaque-date{ font-family:"Fraunces",serif; font-weight:700; font-size:1.2rem; }
+  .plaque-place{ display:block; margin-top:.15rem; color:var(--text-muted); font-size:.92rem; }
+  .plaque-note{ display:block; margin-top:.6rem; font-size:.76rem; color:var(--text-muted); }
+
+  .teaser-row{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2.4rem; }
+  .teaser{
+    display:block;
+    text-decoration:none;
+    color:var(--text);
+    background:var(--surface-raised);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:1.2rem 1.3rem;
+  }
+  .teaser:hover{ border-color:var(--brass); }
+  .teaser .eyebrow{ display:block; margin-bottom:.4rem; }
+  .teaser h3{ margin-bottom:.35rem; }
+  .teaser p{ color:var(--text-muted); font-size:.9rem; }
+  @media (max-width:640px){ .teaser-row{ grid-template-columns:1fr; } }
+
+  /* ============ Tables ============ */
+  .table-wrap{ overflow-x:auto; margin-top:1.2rem; border:1px solid var(--border); border-radius:10px; }
+  table{ width:100%; border-collapse:collapse; min-width:420px; }
+  th,td{ text-align:left; padding:.75rem 1rem; font-size:.95rem; }
+  thead th{
+    background:var(--surface-sunken);
+    font-family:"Fraunces",serif;
+    font-weight:700;
+    font-size:.85rem;
+    letter-spacing:.02em;
+  }
+  tbody tr + tr{ border-top:1px solid var(--border); }
+  td.amount, th.amount{ text-align:right; font-variant-numeric:tabular-nums; font-weight:700; color:var(--brass); }
+  tfoot td{ border-top:2px solid var(--border); font-weight:700; }
+
+  /* ============ Forms ============ */
+  fieldset{ border:none; padding:0; margin:0; }
+  .field-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.6rem; }
+  .field{ display:flex; flex-direction:column; gap:.35rem; }
+  .field.full{ grid-column:1 / -1; }
+  .field label{ font-size:.85rem; font-weight:700; }
+  .field label .req{ color:var(--wine); font-weight:400; }
+  .field input[type="text"],
+  .field input[type="email"]{
+    background:var(--surface-raised);
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:.65rem .8rem;
+    font-size:1rem;
+    color:var(--text);
+    font-family:inherit;
+  }
+  .field input:focus-visible{ border-color:var(--brass); }
+  .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  @media (max-width:640px){ .field-grid{ grid-template-columns:1fr; } }
+
+  .tier-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin-top:.5rem; }
+  @media (max-width:640px){ .tier-grid{ grid-template-columns:1fr; } }
+  .tier{ position:relative; }
+  .tier input{ position:absolute; opacity:0; inset:0; width:100%; height:100%; margin:0; cursor:pointer; }
+  .tier-card{
+    border:1px solid var(--border);
+    background:var(--surface-raised);
+    border-radius:8px;
+    padding:.9rem 1rem;
+    display:flex;
+    flex-direction:column;
+    gap:.15rem;
+  }
+  .tier input:checked + .tier-card{ border-color:var(--brass); background:var(--brass-tint); }
+  .tier input:focus-visible + .tier-card{ outline:3px solid var(--focus); outline-offset:2px; }
+  .tier-name{ font-weight:700; font-size:.92rem; }
+  .tier-price{ font-family:"Fraunces",serif; font-weight:700; font-size:1.3rem; font-variant-numeric:tabular-nums; }
+
+  .consent{ display:flex; align-items:flex-start; gap:.6rem; margin-top:1.4rem; font-size:.9rem; max-width:60ch; }
+  .consent input{ margin-top:.25rem; flex:0 0 auto; }
+
+  .confirm-panel{
+    display:none;
+    margin-top:1.6rem;
+    padding:1.1rem 1.3rem;
+    background:var(--brass-tint);
+    border:1px solid var(--brass);
+    border-radius:8px;
+    font-size:.95rem;
+  }
+  .confirm-panel.is-visible{ display:block; }
+  .confirm-panel strong{ display:block; margin-bottom:.3rem; font-family:"Fraunces",serif; font-size:1.05rem; }
+
+  /* ============ Payrexx tiles ============ */
+  .pay-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:.9rem; margin-top:1.3rem; }
+  @media (max-width:640px){ .pay-grid{ grid-template-columns:1fr; } }
+  .pay-tile{
+    border:1px solid var(--border);
+    background:var(--surface-raised);
+    border-radius:10px;
+    padding:1.1rem 1.1rem 1.2rem;
+    display:flex;
+    flex-direction:column;
+    gap:.6rem;
+    position:relative;
+  }
+  .pay-tile.is-selected{ border-color:var(--brass); box-shadow:0 0 0 1px var(--brass); }
+  .pay-amount{ font-family:"Fraunces",serif; font-weight:700; font-size:1.6rem; font-variant-numeric:tabular-nums; }
+  .btn.is-disabled, .btn.is-disabled:hover{
+    cursor:default;
+    opacity:.6;
+    background:transparent;
+    border-color:var(--border);
+    color:var(--text-muted);
+  }
+
+  /* ============ Projekte — masonry timeline ============ */
+  .wall{ margin-top:1.6rem; display:flex; flex-direction:column; gap:.55rem; }
+  .course{
+    display:grid;
+    grid-template-columns:4rem 4.5rem 1fr 8rem;
+    gap:1rem;
+    align-items:center;
+    background:var(--surface-raised);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:.7rem 1.1rem;
+  }
+  .course:nth-child(even){ margin-left:1.8rem; }
+  .course:nth-child(odd){ margin-right:1.8rem; }
+  .course-thumb{ width:4rem; height:4rem; border-radius:6px; object-fit:cover; border:1px solid var(--border); }
+  .course-year{ font-family:"Fraunces",serif; font-weight:900; font-size:1.5rem; color:var(--brass); }
+  .course-title{ font-weight:700; font-size:.98rem; }
+  .course-amount{ text-align:right; font-variant-numeric:tabular-nums; font-weight:700; }
+  @media (max-width:600px){
+    .course{ grid-template-columns:3.4rem 1fr auto; }
+    .course:nth-child(even), .course:nth-child(odd){ margin-left:0; margin-right:0; }
+    .course-thumb{ display:none; }
+  }
+
+  /* ============ Vorstand nameplates ============ */
+  .nameplates{ display:grid; grid-template-columns:repeat(2,1fr); gap:.75rem; margin-top:1.6rem; }
+  @media (max-width:640px){ .nameplates{ grid-template-columns:1fr; } }
+  .nameplate{
+    display:flex; align-items:center; gap:.9rem;
+    background:var(--surface-raised); border:1px solid var(--border); border-radius:8px;
+    padding:.85rem 1rem;
+  }
+  .nameplate-badge{
+    flex:0 0 auto; width:3.2rem; height:3.2rem; border-radius:50%;
+    background:var(--surface-sunken); border:1px solid var(--border);
+    object-fit:cover; object-position:top center;
+  }
+  .nameplate-role{ font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--brass); font-weight:700; }
+  .nameplate-name{ font-weight:700; }
+
+  /* ============ Era strip (Geschichte) ============ */
+  .era-strip{ display:flex; overflow-x:auto; gap:0; margin:1.6rem 0 2rem; border-top:2px solid var(--border); border-bottom:2px solid var(--border); }
+  .era{ flex:1 0 7.5rem; padding:.9rem 1rem; border-right:1px solid var(--border); }
+  .era:last-child{ border-right:none; }
+  .era-year{ font-family:"Fraunces",serif; font-weight:700; color:var(--brass); font-size:1rem; }
+  .era-what{ font-size:.78rem; color:var(--text-muted); margin-top:.15rem; }
+
+  article.history p{ margin-top:1rem; max-width:66ch; }
+  article.history p:first-child{ margin-top:0; }
+  .history-figure{
+    float:right; margin:0 0 1rem 1.5rem; width:15rem; max-width:40%;
+  }
+  .history-figure img{ width:100%; display:block; border-radius:8px; border:1px solid var(--border); box-shadow:var(--shadow); }
+  .history-figure figcaption{ margin-top:.4rem; font-size:.76rem; color:var(--text-muted); font-style:italic; }
+  @media (max-width:640px){ .history-figure{ float:none; width:100%; max-width:100%; margin:0 0 1.5rem; } }
+  .pull{
+    font-family:"Fraunces",serif; font-style:italic; font-weight:500;
+    font-size:1.3rem; color:var(--text); max-width:52ch; margin:2rem 0; line-height:1.4;
+    border-left:3px solid var(--brass); padding-left:1.1rem;
+  }
+
+  /* ============ Gallery ============ */
+  .gallery{ columns:3 14rem; column-gap:.8rem; margin-top:1.5rem; }
+  .gallery a{ display:block; break-inside:avoid; margin-bottom:.8rem; }
+  .gallery img{
+    display:block; width:100%; border-radius:8px; border:1px solid var(--border);
+    box-shadow:var(--shadow);
+  }
+  @media (max-width:640px){ .gallery{ columns:2 10rem; } }
+
+  /* ============ Kontakt / Impressum / Datenschutz ============ */
+  .kv-list{ margin-top:1.4rem; display:flex; flex-direction:column; gap:.9rem; max-width:52ch; }
+  .kv-row{ display:flex; gap:1rem; border-bottom:1px solid var(--border); padding-bottom:.7rem; }
+  .kv-row dt{ flex:0 0 9rem; font-weight:700; font-size:.85rem; color:var(--text-muted); }
+  .kv-row dd{ margin:0; }
+  .kv-row dd .todo{ color:var(--text-muted); font-style:italic; }
+
+  article.legal h3{ margin-top:1.8rem; margin-bottom:.5rem; }
+  article.legal h3:first-child{ margin-top:0; }
+  article.legal p{ max-width:66ch; margin-top:.6rem; color:var(--text-muted); }
+
+  footer.page-foot{ margin-top:3.5rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:.8rem; color:var(--text-muted); }
+
+  /* ============ Mobile nav ============ */
+  @media (max-width:900px){
+    .app{ flex-direction:column; }
+    .site-nav{
+      position:sticky; top:0; z-index:20; height:auto; width:100%;
+      border-right:none; border-bottom:1px solid var(--border);
+      padding:1rem 1.25rem; background:var(--surface);
+      flex-direction:row; align-items:center; justify-content:space-between; gap:1rem;
+    }
+    .nav-toggle{
+      display:inline-flex; align-items:center; gap:.4rem;
+      background:transparent; border:1px solid var(--border); border-radius:6px;
+      padding:.5rem .7rem; color:var(--text); font-weight:700; font-size:.85rem; cursor:pointer;
+    }
+    .nav-body{
+      display:none; position:absolute; top:100%; left:0; right:0;
+      background:var(--surface); border-bottom:1px solid var(--border);
+      padding:1rem 1.25rem 1.5rem; flex-direction:column; gap:1rem; max-height:80vh; overflow-y:auto;
+      box-shadow:var(--shadow);
+    }
+    .nav-body.is-open{ display:flex; }
+    main{ padding-top:1.75rem; }
+  }
+</style>
+
+</head>
+<body>
+<div class="app">
+  <!-- ============ NAV ============ -->
+  <aside class="site-nav">
+    <div class="brand">
+      <img class="brand-logo" src="bilder/logo.png" alt="Vereinigung Pro Burg Neu-Altstätten">
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navBody">
+      <span aria-hidden="true">☰</span> Menü
+    </button>
+
+    <div class="nav-body" id="navBody">
+      <nav class="nav-group" aria-label="Hauptnavigation">
+        <a class="nav-link" data-route="home" href="#/">Home</a>
+        <a class="nav-link" data-route="mitglied" href="#/mitglied-werden">Mitglied werden</a>
+        <a class="nav-link" data-route="projekte" href="#/projekte">Projekte vom Verein</a>
+        <a class="nav-link" data-route="wer" href="#/wer-wir-sind">Wer wir sind – Ziele</a>
+        <a class="nav-link" data-route="geschichte" href="#/geschichte">Geschichte der Burg</a>
+        <a class="nav-link" data-route="impressionen" href="#/impressionen">Impressionen</a>
+        <a class="nav-link" data-route="kontakt" href="#/kontakt">Kontakt</a>
+      </nav>
+      <nav class="nav-group nav-secondary" aria-label="Rechtliches">
+        <a class="nav-link" data-route="impressum" href="#/impressum">Impressum</a>
+        <a class="nav-link" data-route="datenschutz" href="#/datenschutz">Datenschutz</a>
+      </nav>
+      <p class="nav-foot">
+        Damit die Burg auch in 500&nbsp;Jahren noch so gut aussieht.
+      </p>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main id="view">
+
+    <!-- ---------- HOME ---------- -->
+    <section class="page hero" id="page-home" data-title="Home">
+      <h1>Alter schützt vor Liebe nicht,<br>aber Liebe vor dem Altern.</h1>
+      <p class="lede">Wir lieben unsere Burg, darum schützen wir sie – auch vor dem Altern. Willkommen beim Burgverein Lüchinga.</p>
+      <div class="btn-row">
+        <a class="btn" href="#/mitglied-werden">Ich möchte auch Mitglied werden</a>
+      </div>
+
+      <img class="hero-photo" src="bilder/hero.jpg" alt="Die Burg Neu-Altstätten in Lüchingen">
+
+      <div class="plaque">
+        <span class="plaque-seal" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 30 30"><circle cx="15" cy="15" r="14" fill="none" stroke="var(--wine)" stroke-width="1.4"/><path d="M15 6l2.4 5.6 6 .5-4.6 4 1.4 5.9-5.2-3.2-5.2 3.2 1.4-5.9-4.6-4 6-.5Z" fill="var(--wine)" opacity=".85"/></svg>
+        </span>
+        <div>
+          <span class="eyebrow">Nächste Burgversammlung</span>
+          <span class="plaque-date" id="nextVersammlung">wird berechnet …</span>
+          <span class="plaque-place">Torkel auf der Burg, 19.30 Uhr</span>
+          <span class="plaque-note">Datum wird automatisch nach der Regel «jeweils 2. Freitag im August» berechnet – hier ist nichts von Hand nachzuführen.</span>
+        </div>
+      </div>
+
+      <div class="teaser-row">
+        <a class="teaser" href="#/projekte">
+          <span class="eyebrow">Seit 1976</span>
+          <h3>Fast 50&nbsp;Jahre Vereinsarbeit</h3>
+          <p>Von der Aussenbeleuchtung bis zum Erker: neun Projekte, die die Burg bis heute tragen.</p>
+        </a>
+        <a class="teaser" href="#/geschichte">
+          <span class="eyebrow">Seit 1370</span>
+          <h3>Eine Burg mit Geschichte</h3>
+          <p>Erbaut von den Edlen von Altstätten, bewohnt bis heute von der Familie Enk – in 12. Generation.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ---------- MITGLIED WERDEN ---------- -->
+    <section class="page" id="page-mitglied" data-title="Mitglied werden">
+      <div class="page-head">
+        <span class="eyebrow">Mitglied werden</span>
+        <h2>Werden Sie moderne Ritterin oder moderner Ritter.</h2>
+      </div>
+
+      <p>Die Einladung mit Einzahlungsschein erfolgt nach der Anmeldung per Post. Im Jahresbeitrag ist ein Gutschein für eine 75-cl-Flasche Burgwein enthalten, der ausschliesslich an der Jahresversammlung eingelöst werden kann.</p>
+
+      <p>Die Jahresversammlung findet traditionell am 2. Freitag im August im Torkel der Burg statt und führt damit das einstige Burgfest im kleinen Rahmen weiter: gemütlich, gesellig und unserer Burg zuliebe. Neumitglieder sind herzlich willkommen.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Mitgliedschaft</th><th class="amount">Jahresbeitrag</th></tr></thead>
+          <tbody>
+            <tr><td>Einzelmitglied</td><td class="amount">CHF 40.–</td></tr>
+            <tr><td>Familie</td><td class="amount">CHF 70.–</td></tr>
+            <tr><td>Unternehmen / Verein</td><td class="amount">CHF 100.–</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <form id="anmeldeform" name="anmeldung" data-netlify="true" novalidate style="margin-top:2.2rem;">
+        <h3>Anmeldeformular</h3>
+        <p class="lede" style="font-size:.92rem;margin-top:.35rem;">Ihre Angaben gehen per E-Mail an den Vorstand. Felder mit <span style="color:var(--wine)">*</span> sind Pflichtfelder.</p>
+
+        <div class="hp">
+          <label for="botfield">Nicht ausfüllen</label>
+          <input id="botfield" name="bot-field" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="field-grid">
+          <div class="field"><label for="vorname">Vorname <span class="req">*</span></label><input id="vorname" name="vorname" type="text" required></div>
+          <div class="field"><label for="nachname">Name <span class="req">*</span></label><input id="nachname" name="nachname" type="text" required></div>
+          <div class="field full"><label for="strasse">Strasse / Nr. <span class="req">*</span></label><input id="strasse" name="strasse" type="text" required></div>
+          <div class="field"><label for="plz">PLZ / Ort <span class="req">*</span></label><input id="plz" name="plz" type="text" required></div>
+          <div class="field"><label for="email">E-Mail <span class="req">*</span></label><input id="email" name="email" type="email" required></div>
+        </div>
+
+        <div style="margin-top:1.4rem;">
+          <label style="font-size:.85rem;font-weight:700;">Mitgliedschaft <span class="req" style="color:var(--wine)">*</span></label>
+          <div class="tier-grid">
+            <label class="tier">
+              <input type="radio" name="mitgliedschaft" value="Einzelmitglied" data-price="40" required>
+              <span class="tier-card"><span class="tier-name">Einzelmitglied</span><span class="tier-price">CHF 40.–</span></span>
+            </label>
+            <label class="tier">
+              <input type="radio" name="mitgliedschaft" value="Familie" data-price="70">
+              <span class="tier-card"><span class="tier-name">Familie</span><span class="tier-price">CHF 70.–</span></span>
+            </label>
+            <label class="tier">
+              <input type="radio" name="mitgliedschaft" value="Unternehmen / Verein" data-price="100">
+              <span class="tier-card"><span class="tier-name">Unternehmen / Verein</span><span class="tier-price">CHF 100.–</span></span>
+            </label>
+          </div>
+        </div>
+
+        <label class="consent">
+          <input type="checkbox" required>
+          <span>Ich habe die <a href="#/datenschutz" class="link">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben einverstanden. <span class="req" style="color:var(--wine)">*</span></span>
+        </label>
+
+        <div class="btn-row">
+          <button class="btn" type="submit">Anmeldung senden</button>
+        </div>
+
+        <div class="confirm-panel" id="confirmPanel">
+          <strong>Danke für Ihre Anmeldung!</strong>
+          Sie erhalten in Kürze eine Einladung mit Einzahlungsschein per Post.
+        </div>
+      </form>
+
+      <div style="margin-top:2.8rem;">
+        <span class="eyebrow">Neu</span>
+        <h3 style="margin-top:.4rem;">Beitrag direkt online bezahlen</h3>
+        <p style="margin-top:.5rem;color:var(--text-muted);max-width:60ch;">Demnächst lässt sich der Jahresbeitrag optional sofort online per Karte oder TWINT bezahlen. Bis dahin gilt wie gewohnt die Einzahlung per QR-Rechnung nach der Anmeldung.</p>
+
+        <div class="pay-grid" id="payGrid">
+          <div class="pay-tile" data-tier="Einzelmitglied">
+            <span class="tier-name">Einzelmitglied</span>
+            <span class="pay-amount">CHF 40.–</span>
+            <span class="btn btn-ghost btn-block is-disabled" aria-disabled="true">Bald verfügbar</span>
+          </div>
+          <div class="pay-tile" data-tier="Familie">
+            <span class="tier-name">Familie</span>
+            <span class="pay-amount">CHF 70.–</span>
+            <span class="btn btn-ghost btn-block is-disabled" aria-disabled="true">Bald verfügbar</span>
+          </div>
+          <div class="pay-tile" data-tier="Unternehmen / Verein">
+            <span class="tier-name">Unternehmen / Verein</span>
+            <span class="pay-amount">CHF 100.–</span>
+            <span class="btn btn-ghost btn-block is-disabled" aria-disabled="true">Bald verfügbar</span>
+          </div>
+        </div>
+        <!-- Sobald die Payrexx-Paylinks bereitstehen: die drei <span class="btn ...is-disabled"> oben
+             durch <a class="btn btn-ghost btn-block" href="[Paylink-URL]">Bezahlen mit Payrexx</a> ersetzen. -->
+      </div>
+    </section>
+
+    <!-- ---------- PROJEKTE ---------- -->
+    <section class="page page-wide" id="page-projekte" data-title="Projekte vom Verein">
+      <div class="page-head">
+        <span class="eyebrow">Projekte vom Verein</span>
+        <h2>Fast fünfzig Jahre, Stein um Stein.</h2>
+      </div>
+
+      <p class="lede">Von 1976 bis heute hat die Vereinigung Pro Burg über CHF 153'000.– zusammengebracht und damit den Unterhalt dieses grossartigen Bauwerks aus der Ritterzeit unterstützt. Wir Mitglieder des Burgvereins sind also eine Art moderne Ritter!</p>
+
+      <div class="wall" role="list">
+        <div class="course" role="listitem"><img class="course-thumb" src="bilder/projekte/2024-erker.jpg" alt=""><span class="course-year">2024</span><span><span class="course-title">Wiederherstellung des Erkers zur Sanierung des Badezimmers</span></span><span class="course-amount">CHF 15'000.–</span></div>
+        <div class="course" role="listitem"><img class="course-thumb" src="bilder/projekte/2016-aussenbeleuchtung.jpg" alt=""><span class="course-year">2016</span><span><span class="course-title">Aussenbeleuchtung, neue LED-Beleuchtung</span></span><span class="course-amount">CHF 6'000.–</span></div>
+        <div class="course" role="listitem"><img class="course-thumb" src="bilder/projekte/2014-mauersanierung.jpg" alt=""><span class="course-year">2014</span><span><span class="course-title">Mauersanierung</span></span><span class="course-amount">CHF 25'000.–</span></div>
+        <div class="course" role="listitem"><img class="course-thumb" src="bilder/projekte/2011-mauer-torkel.jpg" alt=""><span class="course-year">2011</span><span><span class="course-title">Mauer beim Torkel</span></span><span class="course-amount">CHF 11'000.–</span></div>
+        <div class="course" role="listitem"><img class="course-thumb" src="bilder/projekte/2007-heizung.jpg" alt=""><span class="course-year">2007</span><span><span class="course-title">Heizung</span></span><span class="course-amount">CHF 10'000.–</span></div>
+        <div class="course" role="listitem"><img class="course-thumb" src="bilder/projekte/1996-umbau-torkel.jpg" alt=""><span class="course-year">1996</span><span><span class="course-title">Umbau Torkel</span></span><span class="course-amount">CHF 13'000.–</span></div>
+        <div class="course" role="listitem"><img class="course-thumb" src="bilder/projekte/1993-umfassungsmauer.jpg" alt=""><span class="course-year">1993</span><span><span class="course-title">Umfassungsmauer</span></span><span class="course-amount">CHF 16'000.–</span></div>
+        <div class="course" role="listitem"><img class="course-thumb" src="bilder/projekte/1985-renovation.jpg" alt=""><span class="course-year">1985</span><span><span class="course-title">Renovation Burg</span></span><span class="course-amount">CHF 60'000.–</span></div>
+        <div class="course" role="listitem"><img class="course-thumb" src="bilder/projekte/1976-beleuchtung.jpg" alt=""><span class="course-year">1976</span><span><span class="course-title">Beleuchtung</span></span><span class="course-amount">CHF 12'000.–</span></div>
+      </div>
+    </section>
+
+    <!-- ---------- WER WIR SIND ---------- -->
+    <section class="page" id="page-wer" data-title="Wer wir sind – Ziele">
+      <div class="page-head">
+        <span class="eyebrow">Wer wir sind – Ziele</span>
+        <h2>Aus einem Fest wurde ein Verein.</h2>
+      </div>
+
+      <article class="history">
+        <p>1975 wurde es in Lüchingen wieder einmal laut und fröhlich: Die Burg feierte Geburtstag und wurde 600&nbsp;Jahre alt. Die Besucherinnen und Besucher des Festes feierten drei Tage lang durch und fühlten sich danach fast so alt wie die Burg selbst.</p>
+        <p>Das Resultat dieser Party war ein unerwartet stolzer Reingewinn. Ein Teil des Geldes floss in die erste Aussenbeleuchtung der Burg, der immer noch beachtliche Rest in deren Erhaltung.</p>
+        <p>Damit war das Bewusstsein geweckt, dass die Erhaltung eines Denkmals nicht einfach der Besitzerfamilie allein zugemutet werden kann. So wurde am 8.&nbsp;Mai 1976 die Vereinigung «Pro Burg Neu-Altstätten» gegründet – mit dem Ziel, die Erhaltung der Burg und deren Bewohnbarkeit durch finanzielle und administrative Mithilfe zu sichern.</p>
+        <p>Der runde Geburtstag unserer Burg Neu-Altstätten wurde damit zur Geburtsstunde des Burgvereins.</p>
+      </article>
+
+      <h3 style="margin-top:2.4rem;">Aktueller Vorstand</h3>
+      <div class="nameplates">
+        <div class="nameplate"><img class="nameplate-badge" src="bilder/vorstand/mario-sonderegger.jpg" alt=""><span><span class="nameplate-role">Präsident</span><br><span class="nameplate-name">Mario Sonderegger</span></span></div>
+        <div class="nameplate"><img class="nameplate-badge" src="bilder/vorstand/philippe-langenegger.png" alt=""><span><span class="nameplate-role">Kassier</span><br><span class="nameplate-name">Philippe Langenegger</span></span></div>
+        <div class="nameplate"><img class="nameplate-badge" src="bilder/vorstand/stefan-eugster.jpg" alt=""><span><span class="nameplate-role">Aktuar</span><br><span class="nameplate-name">Stefan Eugster</span></span></div>
+        <div class="nameplate"><img class="nameplate-badge" src="bilder/vorstand/bruno-baumgartner.jpg" alt=""><span><span class="nameplate-role">Beisitzer</span><br><span class="nameplate-name">Bruno Baumgartner</span></span></div>
+        <div class="nameplate"><img class="nameplate-badge" src="bilder/vorstand/josef-enk.jpg" alt=""><span><span class="nameplate-role">Burgherr</span><br><span class="nameplate-name">Josef Enk</span></span></div>
+        <div class="nameplate"><img class="nameplate-badge" src="bilder/vorstand/monika-enk.jpg" alt=""><span><span class="nameplate-role">Vorstand</span><br><span class="nameplate-name">Monika Enk</span></span></div>
+      </div>
+    </section>
+
+    <!-- ---------- GESCHICHTE ---------- -->
+    <section class="page" id="page-geschichte" data-title="Geschichte der Burg">
+      <div class="page-head">
+        <span class="eyebrow">Geschichte der Burg</span>
+        <h2>Sechshundertfünfzig Jahre, ultrakurz.</h2>
+      </div>
+
+      <p class="lede">Unter unseren Burg-Fans gibt es auch geschichtlich Interessierte. Darum hier eine ultrakurze Version der letzten rund 650&nbsp;Jahre.</p>
+
+      <div class="era-strip">
+        <div class="era"><span class="era-year">1370–75</span><span class="era-what">Bau durch die Edlen von Altstätten</span></div>
+        <div class="era"><span class="era-year">1402</span><span class="era-what">Ritter Rudolf, letzter Meier von Altstätten</span></div>
+        <div class="era"><span class="era-year">1476</span><span class="era-what">Erbin Kunigunde stirbt</span></div>
+        <div class="era"><span class="era-year">1639</span><span class="era-what">Verkauf an elf Altstätter Bürger</span></div>
+        <div class="era"><span class="era-year">heute</span><span class="era-what">12. Generation Familie Enk</span></div>
+      </div>
+
+      <figure class="history-figure">
+        <img src="bilder/geschichte.jpg" alt="Historische Ansicht der Burg Neu-Altstätten">
+        <figcaption>Die Burg Neu-Altstätten, erbaut 1370–1375.</figcaption>
+      </figure>
+
+      <article class="history">
+        <p>In Altstätten standen einst vier Burgen. Während drei davon seit Jahrhunderten in Trümmern liegen, ist «Neu-Altstätten» erhalten geblieben und wird bis heute bewohnt.</p>
+        <p>Erbaut wurde sie in den Jahren 1370 bis 1375 von drei Edlen von Altstätten – Vater, Sohn und Enkel, alle drei mit dem Namen Eglolf.</p>
+        <p>1402 findet man Ritter Rudolf als Besitzer der Burg, den letzten aus der Linie der Meier von Altstätten. Nach seinem Tod ging sie an seine Tochter Kunigunde über, die als Erbauerin eines Hauses an der westlichen Ringmauer des Städtchens – dem «gnädigen Frowen Hof» – in die Altstätter Geschichte einging.</p>
+        <p class="pull">«Sie steht heute in der 12. Generation im Eigentum von Josef Enk.»</p>
+        <p>Als Kunigunde 1476 starb, kam der Besitz als Heiratsgut an ihren Schwiegersohn Sigmund von Freiberg. Von 1566 bis 1570 waltete Graf Gabriel von Hohenems, verheiratet mit Helena von Freiberg, als Burgherr, ihm folgten die Edlen von Schönau im Schwarzwald.</p>
+        <p>1639 verkaufte Hans Kaspar seinen gesamten Altstätter Besitz, darunter die Burg, mit Bewilligung des Abtes von St.&nbsp;Gallen an elf Bürger von Altstätten – einer davon Stadtschreiber Gilg Enk. Die Bürger teilten den Besitz unter sich auf, und Enk übernahm die Burg mit den umliegenden Wiesen und Äckern. Seither vererbt sie sich innerhalb der Familie Enk und steht heute, in der 12. Generation, im Eigentum von Josef Enk.</p>
+      </article>
+    </section>
+
+    <!-- ---------- IMPRESSIONEN ---------- -->
+    <section class="page page-wide" id="page-impressionen" data-title="Impressionen">
+      <div class="page-head">
+        <span class="eyebrow">Impressionen</span>
+        <h2>Die Burg in Bildern.</h2>
+      </div>
+      <p class="lede">Impressionen rund um die Burg — ein Bild sagt mehr als tausend Vereinsprotokolle.</p>
+      <div class="gallery" id="impressionenGallery"></div>
+    </section>
+
+    <!-- ---------- KONTAKT ---------- -->
+    <section class="page" id="page-kontakt" data-title="Kontakt">
+      <div class="page-head">
+        <span class="eyebrow">Kontakt</span>
+        <h2>Sprechen Sie mit uns.</h2>
+      </div>
+
+      <dl class="kv-list">
+        <div class="kv-row"><dt>Verein</dt><dd>Vereinigung Pro Burg Neu-Altstätten</dd></div>
+        <div class="kv-row"><dt>E-Mail</dt><dd><a class="link" href="mailto:info@burgverein.ch">info@burgverein.ch</a></dd></div>
+        <div class="kv-row"><dt>Standort</dt><dd>Burg Neu-Altstätten, Burgfeld, Lüchingen &nbsp;·&nbsp; <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=Burg+Neu-Altst%C3%A4tten%2C+Burgfeld%2C+L%C3%BCchingen%2C+Schweiz" target="_blank" rel="noopener">auf Google Maps öffnen ↗</a></dd></div>
+      </dl>
+
+      <form id="kontaktform" name="kontakt" data-netlify="true" novalidate style="margin-top:2rem;max-width:520px;">
+        <h3>Kontaktformular</h3>
+        <p class="lede" style="font-size:.92rem;margin-top:.35rem;">Für alles, was kein Anmeldeformular braucht. Felder mit <span style="color:var(--wine)">*</span> sind Pflichtfelder.</p>
+
+        <div class="hp">
+          <label for="kbotfield">Nicht ausfüllen</label>
+          <input id="kbotfield" name="bot-field" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="field-grid">
+          <div class="field full"><label for="kname">Name <span class="req">*</span></label><input id="kname" name="name" type="text" required></div>
+          <div class="field full"><label for="kemail">E-Mail <span class="req">*</span></label><input id="kemail" name="email" type="email" required></div>
+          <div class="field full">
+            <label for="knachricht">Deine Nachricht für uns <span class="req">*</span></label>
+            <textarea id="knachricht" name="nachricht" rows="5" required style="background:var(--surface-raised);border:1px solid var(--border);border-radius:6px;padding:.65rem .8rem;font-size:1rem;font-family:inherit;color:var(--text);resize:vertical;"></textarea>
+          </div>
+        </div>
+
+        <label class="consent">
+          <input type="checkbox" required>
+          <span>Es gilt unsere <a href="#/datenschutz" class="link">Datenschutzerklärung</a>. <span class="req" style="color:var(--wine)">*</span></span>
+        </label>
+
+        <div class="btn-row">
+          <button class="btn" type="submit">Nachricht senden</button>
+        </div>
+
+        <div class="confirm-panel" id="kontaktConfirm">
+          <strong>Danke für Ihre Nachricht!</strong>
+          Der Vorstand meldet sich so bald wie möglich bei Ihnen.
+        </div>
+      </form>
+    </section>
+
+    <!-- ---------- IMPRESSUM ---------- -->
+    <section class="page" id="page-impressum" data-title="Impressum">
+      <div class="page-head">
+        <span class="eyebrow">Impressum</span>
+        <h2>Angaben gemäss Vereinsstatuten.</h2>
+      </div>
+      <dl class="kv-list">
+        <div class="kv-row"><dt>Verein</dt><dd>Vereinigung Pro Burg Neu-Altstätten, gegründet 8. Mai 1976</dd></div>
+        <div class="kv-row"><dt>Sitz</dt><dd class="todo">wird ergänzt</dd></div>
+        <div class="kv-row"><dt>Vertretung</dt><dd>Mario Sonderegger, Präsident</dd></div>
+        <div class="kv-row"><dt>Kontakt</dt><dd><a class="link" href="#/kontakt">siehe Kontakt-Seite</a></dd></div>
+        <div class="kv-row"><dt>Verantwortlich für den Inhalt</dt><dd class="todo">wird ergänzt</dd></div>
+      </dl>
+    </section>
+
+    <!-- ---------- DATENSCHUTZ ---------- -->
+    <section class="page" id="page-datenschutz" data-title="Datenschutz">
+      <div class="page-head">
+        <span class="eyebrow">Datenschutz</span>
+        <h2>Wie wir mit Ihren Daten umgehen.</h2>
+      </div>
+      <article class="legal">
+        <h3>Verantwortliche Stelle</h3>
+        <p>Vereinigung Pro Burg Neu-Altstätten («Burgverein Lüchinga»), vertreten durch den Vorstand.</p>
+
+        <h3>Welche Daten wir erheben</h3>
+        <p>Beim Ausfüllen des Anmeldeformulars erheben wir Vorname, Name, Adresse, PLZ/Ort, E-Mail-Adresse sowie die gewählte Mitgliedschaft. Diese Angaben werden per E-Mail an den Vorstand übermittelt und für die Vereinsverwaltung sowie den Versand der Einzahlungseinladung verwendet.</p>
+
+        <h3>Zahlung über Payrexx</h3>
+        <p>Wer den Mitgliedsbeitrag direkt online bezahlt, wird dafür an den Zahlungsdienstleister Payrexx AG weitergeleitet. Payrexx verarbeitet die für die Zahlung nötigen Daten gemäss eigener Datenschutzerklärung; wir erhalten von Payrexx lediglich die Bestätigung der Zahlung.</p>
+
+        <h3>Aufbewahrung</h3>
+        <p>Wir bewahren Ihre Angaben so lange auf, wie es für die Mitgliedschaft und die gesetzlichen Aufbewahrungspflichten erforderlich ist.</p>
+
+        <h3>Ihre Rechte</h3>
+        <p>Sie können jederzeit Auskunft über die zu Ihrer Person gespeicherten Daten verlangen und deren Berichtigung oder Löschung verlangen. Wenden Sie sich dazu an den Vorstand, siehe Kontakt-Seite.</p>
+      </article>
+    </section>
+
+    <footer class="page-foot">
+      © 2026 Vereinigung Pro Burg Neu-Altstätten · <a href="#/impressum">Impressum</a> · <a href="#/datenschutz">Datenschutz</a>
+    </footer>
+  </main>
+</div>
+
+<script>
+(function(){
+  var routes = {
+    '': 'home', '/': 'home',
+    '/mitglied-werden': 'mitglied',
+    '/projekte': 'projekte',
+    '/wer-wir-sind': 'wer',
+    '/geschichte': 'geschichte',
+    '/impressionen': 'impressionen',
+    '/kontakt': 'kontakt',
+    '/impressum': 'impressum',
+    '/datenschutz': 'datenschutz'
+  };
+  var pages = document.querySelectorAll('.page');
+  var navLinks = document.querySelectorAll('.nav-link');
+  var main = document.getElementById('view');
+  var navBody = document.getElementById('navBody');
+  var navToggle = document.getElementById('navToggle');
+
+  function currentPath(){
+    var h = location.hash || '#/';
+    return h.replace(/^#/, '') || '/';
+  }
+
+  function render(){
+    var path = currentPath();
+    var routeId = routes.hasOwnProperty(path) ? routes[path] : 'home';
+    pages.forEach(function(p){
+      p.classList.toggle('is-active', p.id === 'page-' + routeId);
+    });
+    navLinks.forEach(function(a){
+      a.removeAttribute('aria-current');
+      if (a.getAttribute('data-route') === routeId) a.setAttribute('aria-current', 'page');
+    });
+    var active = document.getElementById('page-' + routeId);
+    if (active) document.title = active.getAttribute('data-title') + ' – Burgverein Lüchinga';
+    main.scrollTo(0,0);
+    window.scrollTo(0,0);
+    navBody.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  window.addEventListener('hashchange', render);
+  render();
+
+  navToggle.addEventListener('click', function(){
+    var open = navBody.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  // Nächste Burgversammlung: jeweils 2. Freitag im August, automatisch berechnet
+  function secondFridayOfAugust(year){
+    var d = new Date(year, 7, 1);
+    var dow = d.getDay();
+    var firstFriday = 1 + ((5 - dow + 7) % 7);
+    return new Date(year, 7, firstFriday + 7);
+  }
+  function nextVersammlung(){
+    var now = new Date();
+    var c = secondFridayOfAugust(now.getFullYear());
+    if (c < now) c = secondFridayOfAugust(now.getFullYear() + 1);
+    return c;
+  }
+  var dEl = document.getElementById('nextVersammlung');
+  if (dEl){
+    var d = nextVersammlung();
+    dEl.textContent = d.toLocaleDateString('de-CH', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+  }
+
+  // Impressionen: Galerie aus den 31 archivierten Fotos aufbauen
+  var gallery = document.getElementById('impressionenGallery');
+  if (gallery){
+    for (var i = 1; i <= 31; i++){
+      var n = (i < 10 ? '0' : '') + i;
+      var src = 'bilder/impressionen/' + n + '.jpg';
+      var a = document.createElement('a');
+      a.href = src;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      var img = document.createElement('img');
+      img.src = src;
+      img.loading = 'lazy';
+      img.alt = 'Impression rund um die Burg, Foto ' + n;
+      a.appendChild(img);
+      gallery.appendChild(a);
+    }
+  }
+
+  // Anmeldeformular: Demo-Bestätigung + Payrexx-Kachel hervorheben
+  var form = document.getElementById('anmeldeform');
+  var confirmPanel = document.getElementById('confirmPanel');
+  var payTiles = document.querySelectorAll('.pay-tile');
+  if (form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if (!form.checkValidity()){ form.reportValidity(); return; }
+      confirmPanel.classList.add('is-visible');
+      var checked = form.querySelector('input[name="mitgliedschaft"]:checked');
+      payTiles.forEach(function(t){
+        t.classList.toggle('is-selected', checked && t.getAttribute('data-tier') === checked.value);
+      });
+      confirmPanel.scrollIntoView({ behavior:'smooth', block:'center' });
+    });
+  }
+
+  // Kontaktformular: Demo-Bestätigung
+  var kform = document.getElementById('kontaktform');
+  var kconfirm = document.getElementById('kontaktConfirm');
+  if (kform){
+    kform.addEventListener('submit', function(e){
+      e.preventDefault();
+      if (!kform.checkValidity()){ kform.reportValidity(); return; }
+      kconfirm.classList.add('is-visible');
+      kconfirm.scrollIntoView({ behavior:'smooth', block:'center' });
+    });
+  }
+})();
+</script>
+</body>
+</html>
