@@ -129,24 +129,28 @@
 
   /* ============ App shell ============ */
   .app{
-    min-height:100vh;
     max-width:1180px;
     margin:0 auto;
   }
 
-  /* ---- Header nav (dunkel) ---- */
+  /* ---- Header nav (dunkel, volle Breite) ---- */
   .site-header{
     position:sticky;
     top:0;
     z-index:30;
     background:var(--header-bg);
     border-bottom:1px solid var(--header-line);
-    padding:0 clamp(1.25rem,4vw,4rem);
     display:flex;
+    justify-content:center;
     align-items:center;
     min-height:3.75rem;
   }
-  .nav-body{ display:flex; width:100%; }
+  .nav-body{
+    display:flex;
+    width:100%;
+    max-width:1180px;
+    padding:0 clamp(1.25rem,4vw,4rem);
+  }
   .nav-group{
     display:flex;
     flex-wrap:wrap;
@@ -496,6 +500,7 @@
     .nav-toggle[aria-expanded="true"] svg .l3{ transform:translateY(-5px) rotate(-45deg); }
     .nav-body{
       display:none; position:absolute; top:100%; left:0; right:0;
+      max-width:none;
       background:var(--header-bg); border-bottom:1px solid var(--header-line);
       padding:.6rem .9rem 1.1rem; max-height:80vh; overflow-y:auto;
       box-shadow:0 12px 24px rgba(0,0,0,0.28);
@@ -509,10 +514,9 @@
 
 </head>
 <body>
-<div class="app">
-  <!-- ============ NAV ============ -->
-  <header class="site-header">
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navBody" aria-label="Menü">
+<!-- ============ NAV (volle Breite) ============ -->
+<header class="site-header">
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navBody" aria-label="Menü">
       <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
         <line class="l1" x1="3" y1="7" x2="21" y2="7"/>
         <line class="l2" x1="3" y1="12" x2="21" y2="12"/>
@@ -531,8 +535,9 @@
         <a class="nav-link" data-route="kontakt" href="#/kontakt">Kontakt</a>
       </nav>
     </div>
-  </header>
+</header>
 
+<div class="app">
   <!-- ============ MAIN ============ -->
   <main id="view">
 
