@@ -509,6 +509,16 @@ und allen Bildern unter [`bilder/`](bilder/). Kein Build-Schritt nötig — die
 Datei lässt sich direkt im Browser öffnen und genauso direkt über GitHub
 Pages ausliefern, weil Hash-Routing ohne Server-Konfiguration funktioniert.
 
+**Favicon:** stilisierte Silhouette der Burg Neu-Altstätten — Wohnturm mit
+steilem Fachwerkgiebel (angedeutete Zickzack-Zier in Weinrot), Reihen kleiner
+Fenster, rechts der niedrigere Ökonomieanbau mit Tor, dazu die Fahne. Messing-
+und Sandtöne auf dunklem, abgerundetem Grund. Quelle ist
+[`favicon.svg`](favicon.svg); daraus abgeleitet [`favicon.ico`](favicon.ico)
+(16/32/48 px, Fallback für ältere Browser) und
+[`apple-touch-icon.png`](apple-touch-icon.png) (180 px, iOS-Homescreen).
+Wird das SVG geändert, die beiden Rasterdateien neu exportieren
+(Inkscape-CLI, siehe Commit-Historie).
+
 **Veröffentlichen:** Im Repo unter *Settings → Pages* als Quelle *Deploy from
 a branch*, Branch `main`, Ordner `/ (root)` wählen. GitHub liefert danach
 unter `https://<benutzername>.github.io/<repo-name>/` aus. Für die eigene
