@@ -165,10 +165,10 @@
   .nav-toggle{ display:none; }
 
   /* ---- Main ---- */
-  main{ padding:2.5rem clamp(1.25rem,4vw,4rem) 5rem; }
-  .page{ display:none; max-width:760px; margin-inline:auto; }
+  main{ --content-max:820px; padding:2.5rem clamp(1.25rem,4vw,4rem) 5rem; }
+  .page{ display:none; max-width:var(--content-max); margin-inline:auto; }
   .page.is-active{ display:block; }
-  .page-wide{ max-width:920px; }
+  .page > p:not([class]){ max-width:66ch; }
 
   .page-head{ margin-bottom:2.2rem; }
   .page-head .eyebrow{ display:block; margin-bottom:.5rem; }
@@ -460,7 +460,7 @@
   .kv-row address{ font-style:normal; }
   .kv-row .map-link{ display:inline-block; margin-top:.5rem; }
 
-  footer.page-foot{ margin-top:3.5rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:.8rem; color:var(--text-muted); }
+  footer.page-foot{ max-width:var(--content-max); margin:3.5rem auto 0; padding-top:1.5rem; border-top:1px solid var(--border); font-size:.8rem; color:var(--text-muted); }
 
   /* ============ Mobile nav ============ */
   @media (max-width:860px){
@@ -609,7 +609,7 @@
     </section>
 
     <!-- ---------- PROJEKTE ---------- -->
-    <section class="page page-wide" id="page-projekte" data-title="Projekte vom Verein">
+    <section class="page" id="page-projekte" data-title="Projekte vom Verein">
       <div class="page-head">
         <span class="eyebrow">Projekte vom Verein</span>
         <h2>Über fünfzig Jahre, Stein um Stein.</h2>
@@ -695,7 +695,7 @@
     </section>
 
     <!-- ---------- IMPRESSIONEN ---------- -->
-    <section class="page page-wide" id="page-impressionen" data-title="Impressionen">
+    <section class="page" id="page-impressionen" data-title="Impressionen">
       <div class="page-head">
         <span class="eyebrow">Impressionen</span>
         <h2>Die Burg in Bildern.</h2>
