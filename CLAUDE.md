@@ -197,7 +197,7 @@ CHF 153'000.–» — vermutlich ein nicht nachgeführter Wert aus der Zeit vor
 2024. **Vor Veröffentlichung mit dem Kassier abgleichen.**
 
 **Gestaltungshinweis:** Diese Seite ist inhaltlich das Stärkste, was der
-Verein hat — fast fünfzig Jahre nachvollziehbare Arbeit. Auf der alten Seite
+Verein hat — über fünfzig Jahre nachvollziehbare Arbeit. Auf der alten Seite
 steht sie als schlichte Bilderreihe da. Als Zeitstrahl oder Tabelle mit
 Bildern käme sie deutlich besser zur Geltung. Jeder Eintrag hat ein Foto
 (siehe Abschnitt 6).
