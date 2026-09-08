@@ -477,10 +477,21 @@
       color:var(--text);
     }
     .nav-toggle{
-      display:inline-flex; align-items:center; gap:.4rem; flex:0 0 auto;
-      background:transparent; border:1px solid var(--border); border-radius:6px;
-      padding:.5rem .7rem; color:var(--text); font-weight:700; font-size:.85rem; cursor:pointer;
+      display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto;
+      background:transparent; border:0; border-radius:10px;
+      padding:.4rem; margin-right:-.4rem;
+      color:var(--text); cursor:pointer;
+      -webkit-tap-highlight-color:transparent;
     }
+    .nav-toggle:hover{ color:var(--brass); }
+    .nav-toggle svg{ display:block; width:30px; height:30px; }
+    .nav-toggle svg line{
+      transition:transform .22s ease, opacity .12s ease;
+      transform-box:fill-box; transform-origin:center;
+    }
+    .nav-toggle[aria-expanded="true"] svg .l1{ transform:translateY(5px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] svg .l2{ opacity:0; }
+    .nav-toggle[aria-expanded="true"] svg .l3{ transform:translateY(-5px) rotate(-45deg); }
     .nav-body{
       display:none; position:absolute; top:100%; left:0; right:0;
       background:var(--surface); border-bottom:1px solid var(--border);
@@ -502,8 +513,12 @@
       <span class="brand-title" aria-hidden="true">Pro&nbsp;Burg Neu-Altstätten</span>
     </div>
 
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navBody">
-      <span aria-hidden="true">☰</span> Menü
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navBody" aria-label="Menü">
+      <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <line class="l1" x1="3" y1="7" x2="21" y2="7"/>
+        <line class="l2" x1="3" y1="12" x2="21" y2="12"/>
+        <line class="l3" x1="3" y1="17" x2="21" y2="17"/>
+      </svg>
     </button>
 
     <div class="nav-body" id="navBody">
