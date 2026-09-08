@@ -1,27 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <rect width="32" height="32" rx="7" fill="#241D14"/>
-
-  <g fill="#C9A24B">
-    <!-- Seitentürme mit Zinnen -->
-    <rect x="4.5" y="13" width="6" height="13"/>
-    <rect x="4.5" y="10.5" width="1.8" height="3"/>
-    <rect x="8.7" y="10.5" width="1.8" height="3"/>
-    <rect x="21.5" y="13" width="6" height="13"/>
-    <rect x="21.5" y="10.5" width="1.8" height="3"/>
-    <rect x="25.7" y="10.5" width="1.8" height="3"/>
-    <!-- Bergfried mit Zinnen -->
-    <rect x="10.5" y="9" width="11" height="17"/>
-    <rect x="10.5" y="6" width="2.2" height="3.4"/>
-    <rect x="14.9" y="6" width="2.2" height="3.4"/>
-    <rect x="19.3" y="6" width="2.2" height="3.4"/>
-    <!-- Fahnenstange -->
-    <rect x="15.6" y="2.6" width="0.9" height="3.6"/>
-  </g>
-
-  <!-- Wimpel -->
-  <path d="M16.5 2.9 21 4.2 16.5 5.5Z" fill="#A6394A"/>
-
-  <!-- Tor und Fenster (ausgespart) -->
-  <path d="M13.6 26v-7a2.4 2.4 0 0 1 4.8 0v7Z" fill="#241D14"/>
-  <rect x="14.4" y="11" width="3.2" height="3.4" fill="#241D14"/>
+  <path fill="#C9A24B" d="M6 26V8h4v3h4V8h4v3h4V8h4v18Z"/>
+  <path fill="#241D14" d="M12.4 26v-6a3.6 3.6 0 0 1 7.2 0v6Z"/>
 </svg>

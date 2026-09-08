@@ -523,11 +523,10 @@ Body, damit er als eigene Leiste lesbar bleibt. `theme-color` = `#211812`.
 Alle Inhaltsseiten laufen auf einheitliche `--content-max` (820 px), der
 Footer zentriert bündig darunter.
 
-**Favicon:** einfaches, generisches Burg-Icon (bewusst **nicht** an die Burg
-Neu-Altstätten angelehnt) — Bergfried mit drei Zinnen, Rundbogentor und
-kleinem Fenster, zwei flankierende Zinnentürme, obenauf ein kleiner Wimpel.
-**Drei Farben:** dunkler Grund `#241D14` (auch Tor/Fenster), Messing
-`#C9A24B` (Burg), Weinrot `#A6394A` (Wimpel).
+**Favicon:** minimales, generisches Burg-Icon (bewusst **nicht** an die Burg
+Neu-Altstätten angelehnt) — ein Zinnenturm mit drei Zinnen und einem
+Rundbogentor, sonst nichts. **Zwei Farben:** dunkler Grund `#241D14` (auch
+das Tor), Messing `#C9A24B` (die Burg). SVG hat nur zwei `<path>`.
 Quelle ist [`favicon.svg`](favicon.svg); daraus abgeleitet
 [`favicon.ico`](favicon.ico) (16/32/48 px, Fallback für ältere Browser) und
 [`apple-touch-icon.png`](apple-touch-icon.png) (180 px, iOS-Homescreen).
