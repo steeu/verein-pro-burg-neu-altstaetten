@@ -327,7 +327,10 @@ abgeschaltet wird. Danach sind die Quell-URLs wertlos.
 Die URLs enthalten Transformationsparameter (`dimension=370x1024:format=jpg`).
 Für die Originalauflösung `transf/none/` statt `transf/dimension=…/` einsetzen.
 
-**Vereinslogo**
+**Vereinslogo** — liegt als [`bilder/logo.png`](bilder/logo.png) im Repo, wird
+aktuell aber **nirgends auf der Seite angezeigt** (Wortmarke über der
+Navigation auf Wunsch entfernt, da der volle Vereinsname bereits im
+Willkommenstext steht). Datei bleibt für spätere Verwendung erhalten.
 `https://image.jimcdn.com/app/cms/image/transf/none/path/s4e9a2fd3ee5d78b9/image/i7c488228ee697ba9/version/1526791918/image.png`
 
 **Hintergrund- / Open-Graph-Bild (2000×1500)**

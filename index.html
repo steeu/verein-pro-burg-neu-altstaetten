@@ -123,21 +123,16 @@
   /* ---- Sidebar / nav ---- */
   .site-nav{
     flex:0 0 264px;
-    padding:2rem 1.5rem 2rem 1.75rem;
+    padding:2.25rem 1.5rem 2rem 1.75rem;
     border-right:1px solid var(--border);
     display:flex;
     flex-direction:column;
-    gap:2rem;
     position:sticky;
     top:0;
     align-self:flex-start;
     height:100vh;
     overflow-y:auto;
   }
-  .brand{ display:flex; align-items:center; }
-  .brand-logo{ width:100%; max-width:190px; height:auto; display:block; filter:var(--logo-filter, none); }
-  .brand-title{ display:none; }
-
   .nav-group{ display:flex; flex-direction:column; gap:.15rem; }
   .nav-group + .nav-group{ margin-top:.25rem; padding-top:1rem; border-top:1px solid var(--border); }
   .nav-link{
@@ -477,25 +472,12 @@
       flex:0 0 auto; height:auto; width:100%; overflow:visible;
       border-right:none; border-bottom:1px solid var(--border);
       padding:.6rem 1rem; background:var(--surface);
-      flex-direction:row; align-items:center; justify-content:space-between; gap:.75rem;
-    }
-    .site-nav .brand{ min-width:0; flex:1 1 auto; }
-    .site-nav .brand-logo{ display:none; }
-    .site-nav .brand-title{
-      display:block;
-      font-family:"Fraunces", Georgia, serif;
-      font-weight:700;
-      font-size:clamp(.95rem, .7rem + 1.5vw, 1.2rem);
-      line-height:1.1;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      color:var(--text);
+      flex-direction:row; align-items:center; justify-content:center;
     }
     .nav-toggle{
       display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto;
       background:transparent; border:0; border-radius:10px;
-      padding:.4rem; margin-right:-.4rem;
+      padding:.4rem;
       color:var(--text); cursor:pointer;
       -webkit-tap-highlight-color:transparent;
     }
@@ -524,11 +506,6 @@
 <div class="app">
   <!-- ============ NAV ============ -->
   <aside class="site-nav">
-    <div class="brand">
-      <img class="brand-logo" src="bilder/logo.png" alt="Vereinigung Pro Burg Neu-Altstätten">
-      <span class="brand-title" aria-hidden="true">Pro&nbsp;Burg Neu-Altstätten</span>
-    </div>
-
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navBody" aria-label="Menü">
       <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
         <line class="l1" x1="3" y1="7" x2="21" y2="7"/>
