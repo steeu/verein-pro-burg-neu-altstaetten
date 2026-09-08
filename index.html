@@ -453,8 +453,10 @@
   }
 
   /* ============ Kontakt ============ */
-  .kv-list{ margin-top:1.4rem; display:flex; flex-direction:column; gap:.9rem; max-width:52ch; }
-  .kv-row{ display:flex; gap:1rem; border-bottom:1px solid var(--border); padding-bottom:.7rem; }
+  .kv-list{ margin-top:1.4rem; display:flex; flex-direction:column; }
+  .kv-row{ display:flex; gap:1rem; border-bottom:1px solid var(--border); padding:.9rem 0; }
+  .kv-row:first-child{ border-top:1px solid var(--border); }
+  .kv-row:last-child{ border-bottom:none; }
   .kv-row dt{ flex:0 0 9rem; font-weight:700; font-size:.85rem; color:var(--text-muted); }
   .kv-row dd{ margin:0; }
   .kv-row address{ font-style:normal; }
