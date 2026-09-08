@@ -288,7 +288,7 @@ Die Postadresse der Burg ist vom Vorstand nachgeliefert und im Neuaufbau unter
 «Standort» als Adressblock eingetragen:
 
 > Burg Neu-Altstätten
-> Burgfeld 5
+> Burgfeld 2
 > 9450 Lüchingen
 
 Eine eigene Telefonnummer ist nach wie vor nirgends hinterlegt — vermutlich
