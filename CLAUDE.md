@@ -263,14 +263,15 @@ Abschnitt 6, und in [`index.html`](index.html) bereits eingebunden.
 
 ### 5.7 Kontakt
 
-Auf der alten Seite besteht die Kontaktseite aus drei Teilen:
+Auf der alten Seite besteht die Kontaktseite aus drei Teilen: einem
+Kontaktformular (Name, E-Mail, Nachricht), der E-Mail-Adresse
+**info@burgverein.ch** und einer Standort-Karte (Google Maps), zentriert auf
+«Burg Neu-Altstätten, Burgfeld, Lüchingen, Schweiz».
 
-- Einem Kontaktformular (Name, E-Mail, Nachricht — alle Pflichtfelder,
-  Hinweis auf die Datenschutzerklärung), unabhängig vom Anmeldeformular auf
-  «Mitglied werden».
-- Der E-Mail-Adresse **info@burgverein.ch**.
-- Einer Standort-Karte (Google Maps), zentriert auf «Burg Neu-Altstätten,
-  Burgfeld, Lüchingen, Schweiz».
+Im neuen Aufbau bewusst **ohne eigenes Kontaktformular** — E-Mail-Adresse und
+Standort genügen. Wer schreiben will, tut das direkt per E-Mail; ein
+zusätzliches Formular auf derselben Seite wie das Anmeldeformular wäre
+redundant gewesen.
 
 Eine eigene Postadresse oder Telefonnummer ist auf der alten Seite nirgends
 hinterlegt — vermutlich bewusst, da die Korrespondenz über den Kassier läuft

@@ -714,39 +714,6 @@
         <div class="kv-row"><dt>E-Mail</dt><dd><a class="link" href="mailto:info@burgverein.ch">info@burgverein.ch</a></dd></div>
         <div class="kv-row"><dt>Standort</dt><dd>Burg Neu-Altstätten, Burgfeld, Lüchingen &nbsp;·&nbsp; <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=Burg+Neu-Altst%C3%A4tten%2C+Burgfeld%2C+L%C3%BCchingen%2C+Schweiz" target="_blank" rel="noopener">auf Google Maps öffnen ↗</a></dd></div>
       </dl>
-
-      <form id="kontaktform" name="kontakt" data-netlify="true" novalidate style="margin-top:2rem;max-width:520px;">
-        <h3>Kontaktformular</h3>
-        <p class="lede" style="font-size:.92rem;margin-top:.35rem;">Für alles, was kein Anmeldeformular braucht. Felder mit <span style="color:var(--wine)">*</span> sind Pflichtfelder.</p>
-
-        <div class="hp">
-          <label for="kbotfield">Nicht ausfüllen</label>
-          <input id="kbotfield" name="bot-field" type="text" tabindex="-1" autocomplete="off">
-        </div>
-
-        <div class="field-grid">
-          <div class="field full"><label for="kname">Name <span class="req">*</span></label><input id="kname" name="name" type="text" required></div>
-          <div class="field full"><label for="kemail">E-Mail <span class="req">*</span></label><input id="kemail" name="email" type="email" required></div>
-          <div class="field full">
-            <label for="knachricht">Deine Nachricht für uns <span class="req">*</span></label>
-            <textarea id="knachricht" name="nachricht" rows="5" required style="background:var(--surface-raised);border:1px solid var(--border);border-radius:6px;padding:.65rem .8rem;font-size:1rem;font-family:inherit;color:var(--text);resize:vertical;"></textarea>
-          </div>
-        </div>
-
-        <label class="consent">
-          <input type="checkbox" required>
-          <span>Es gilt unsere <a href="#/datenschutz" class="link">Datenschutzerklärung</a>. <span class="req" style="color:var(--wine)">*</span></span>
-        </label>
-
-        <div class="btn-row">
-          <button class="btn" type="submit">Nachricht senden</button>
-        </div>
-
-        <div class="confirm-panel" id="kontaktConfirm">
-          <strong>Danke für Ihre Nachricht!</strong>
-          Der Vorstand meldet sich so bald wie möglich bei Ihnen.
-        </div>
-      </form>
     </section>
 
     <!-- ---------- IMPRESSUM ---------- -->
@@ -896,18 +863,6 @@
         t.classList.toggle('is-selected', checked && t.getAttribute('data-tier') === checked.value);
       });
       confirmPanel.scrollIntoView({ behavior:'smooth', block:'center' });
-    });
-  }
-
-  // Kontaktformular: Demo-Bestätigung
-  var kform = document.getElementById('kontaktform');
-  var kconfirm = document.getElementById('kontaktConfirm');
-  if (kform){
-    kform.addEventListener('submit', function(e){
-      e.preventDefault();
-      if (!kform.checkValidity()){ kform.reportValidity(); return; }
-      kconfirm.classList.add('is-visible');
-      kconfirm.scrollIntoView({ behavior:'smooth', block:'center' });
     });
   }
 })();
