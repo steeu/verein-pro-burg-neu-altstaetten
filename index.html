@@ -420,6 +420,8 @@
   .kv-row{ display:flex; gap:1rem; border-bottom:1px solid var(--border); padding-bottom:.7rem; }
   .kv-row dt{ flex:0 0 9rem; font-weight:700; font-size:.85rem; color:var(--text-muted); }
   .kv-row dd{ margin:0; }
+  .kv-row address{ font-style:normal; }
+  .kv-row .map-link{ display:inline-block; margin-top:.5rem; }
 
   footer.page-foot{ margin-top:3.5rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:.8rem; color:var(--text-muted); }
 
@@ -724,7 +726,10 @@
       <dl class="kv-list">
         <div class="kv-row"><dt>Verein</dt><dd>Vereinigung Pro Burg Neu-Altstätten</dd></div>
         <div class="kv-row"><dt>E-Mail</dt><dd><a class="link" href="mailto:info@burgverein.ch">info@burgverein.ch</a></dd></div>
-        <div class="kv-row"><dt>Standort</dt><dd>Burg Neu-Altstätten, Burgfeld, Lüchingen &nbsp;·&nbsp; <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=Burg+Neu-Altst%C3%A4tten%2C+Burgfeld%2C+L%C3%BCchingen%2C+Schweiz" target="_blank" rel="noopener">auf Google Maps öffnen ↗</a></dd></div>
+        <div class="kv-row"><dt>Standort</dt><dd>
+          <address>Burg Neu-Altstätten<br>Burgfeld 5<br>9450 Lüchingen</address>
+          <a class="link map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Burg%20Neu-Altst%C3%A4tten%2C%20Burgfeld%205%2C%209450%20L%C3%BCchingen" target="_blank" rel="noopener">auf Google Maps öffnen ↗</a>
+        </dd></div>
       </dl>
     </section>
 

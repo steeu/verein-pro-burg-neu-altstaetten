@@ -284,9 +284,16 @@ Standort genügen. Wer schreiben will, tut das direkt per E-Mail; ein
 zusätzliches Formular auf derselben Seite wie das Anmeldeformular wäre
 redundant gewesen.
 
-Eine eigene Postadresse oder Telefonnummer ist auf der alten Seite nirgends
-hinterlegt — vermutlich bewusst, da die Korrespondenz über den Kassier läuft
-(siehe Abschnitt 8). Falls das nicht stimmt, bitte melden.
+Die Postadresse der Burg ist vom Vorstand nachgeliefert und im Neuaufbau unter
+«Standort» als Adressblock eingetragen:
+
+> Burg Neu-Altstätten
+> Burgfeld 5
+> 9450 Lüchingen
+
+Eine eigene Telefonnummer ist nach wie vor nirgends hinterlegt — vermutlich
+bewusst, da die Korrespondenz über den Kassier läuft (siehe Abschnitt 8).
+Falls das nicht stimmt, bitte melden.
 
 ⚠️ Die eingebettete Google-Maps-Karte der alten Seite nutzt einen API-Schlüssel,
 der zum Jimdo-Konto gehört und sich nicht übernehmen lässt. Im Entwurf ist der
