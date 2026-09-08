@@ -509,12 +509,12 @@ und allen Bildern unter [`bilder/`](bilder/). Kein Build-Schritt nötig — die
 Datei lässt sich direkt im Browser öffnen und genauso direkt über GitHub
 Pages ausliefern, weil Hash-Routing ohne Server-Konfiguration funktioniert.
 
-**Favicon:** stilisierte Silhouette der Burg Neu-Altstätten — Wohnturm mit
-steilem Fachwerkgiebel (angedeutete Zickzack-Zier in Weinrot), Reihen kleiner
-Fenster, rechts der niedrigere Ökonomieanbau mit Tor, dazu die Fahne. Messing-
-und Sandtöne auf dunklem, abgerundetem Grund. Quelle ist
-[`favicon.svg`](favicon.svg); daraus abgeleitet [`favicon.ico`](favicon.ico)
-(16/32/48 px, Fallback für ältere Browser) und
+**Favicon:** stark vereinfachte Silhouette der Burg Neu-Altstätten — Wohnturm
+mit steilem Giebel, kleines Giebelfenster, 2×2 Fenster, rechts der niedrige
+Torkel-Anbau. **Nur zwei Farben:** dunkler Grund `#241D14` (auch die
+ausgesparten Fenster), Messing `#C9A24B` (die ganze Burg).
+Quelle ist [`favicon.svg`](favicon.svg); daraus abgeleitet
+[`favicon.ico`](favicon.ico) (16/32/48 px, Fallback für ältere Browser) und
 [`apple-touch-icon.png`](apple-touch-icon.png) (180 px, iOS-Homescreen).
 Wird das SVG geändert, die beiden Rasterdateien neu exportieren
 (Inkscape-CLI, siehe Commit-Historie).

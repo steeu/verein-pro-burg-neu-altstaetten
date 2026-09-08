@@ -1,28 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <rect width="32" height="32" rx="7" fill="#241D14"/>
 
-  <!-- Torkel: niedriger Anbau rechts -->
-  <path d="M16 27v-6.2l5-3.8 8 3.8V27Z" fill="#A6763F"/>
-  <rect x="23" y="21.8" width="2.6" height="5.2" fill="#241D14"/>
+  <!-- Burg als eine Silhouette: Torkel, Wohnturm, Steilgiebel -->
+  <g fill="#C9A24B">
+    <path d="M15 27v-6l5-4 9 4v6Z"/>
+    <rect x="7" y="12" width="14" height="15"/>
+    <path d="M4.4 12 14 2 23.6 12Z"/>
+  </g>
 
-  <!-- Wohnturm: Steinkörper -->
-  <rect x="7" y="12.2" width="14" height="14.8" fill="#C9A24B"/>
-
-  <!-- steiler Fachwerkgiebel mit Dachvorsprung -->
-  <path d="M4.6 12.2 14 2.3 23.4 12.2Z" fill="#E8DCC0"/>
-  <rect x="5.4" y="11.2" width="17.2" height="1.8" fill="#3A2C1A"/>
-
-  <!-- prägnantes Giebelfenster -->
-  <rect x="12.7" y="4.4" width="2.6" height="2.6" fill="#241D14"/>
-  <!-- gelb-schwarzes Zickzackband -->
-  <path d="M8.8 10.5 10.7 8.6 12.6 10.5 14.5 8.6 16.4 10.5 18.3 8.6 20.2 10.5"
-        fill="none" stroke="#B07C1E" stroke-width="1.8" stroke-linejoin="round"/>
-
-  <!-- Fenster (ausgespart) -->
+  <!-- Öffnungen (ausgespart) -->
   <g fill="#241D14">
-    <rect x="9.3" y="14.8" width="2.8" height="3.2"/>
-    <rect x="14.4" y="14.8" width="2.8" height="3.2"/>
-    <rect x="9.3" y="19.6" width="2.8" height="3.2"/>
-    <rect x="14.4" y="19.6" width="2.8" height="3.2"/>
+    <rect x="12.6" y="4.4" width="2.8" height="2.8"/>
+    <rect x="9.4" y="14.4" width="2.9" height="3.4"/>
+    <rect x="14.5" y="14.4" width="2.9" height="3.4"/>
+    <rect x="9.4" y="19.4" width="2.9" height="3.4"/>
+    <rect x="14.5" y="19.4" width="2.9" height="3.4"/>
   </g>
 </svg>
