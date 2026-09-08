@@ -523,12 +523,11 @@ Body, damit er als eigene Leiste lesbar bleibt. `theme-color` = `#211812`.
 Alle Inhaltsseiten laufen auf einheitliche `--content-max` (820 px), der
 Footer zentriert bündig darunter.
 
-**Favicon:** stark vereinfachte Silhouette der Burg Neu-Altstätten — Wohnturm
-mit steilem Giebel, kleines Giebelfenster, unregelmässig verteilte Fenster
-(schmale Reihe unter dem Dach, grössere in der Mitte, kleinere unten – nicht
-im Raster), rechts der niedrige Torkel-Anbau. **Nur zwei Farben:** dunkler
-Grund `#241D14` (auch die ausgesparten Fenster), Messing `#C9A24B` (die ganze
-Burg).
+**Favicon:** einfaches, generisches Burg-Icon (bewusst **nicht** an die Burg
+Neu-Altstätten angelehnt) — Bergfried mit drei Zinnen, Rundbogentor und
+kleinem Fenster, zwei flankierende Zinnentürme, obenauf ein kleiner Wimpel.
+**Drei Farben:** dunkler Grund `#241D14` (auch Tor/Fenster), Messing
+`#C9A24B` (Burg), Weinrot `#A6394A` (Wimpel).
 Quelle ist [`favicon.svg`](favicon.svg); daraus abgeleitet
 [`favicon.ico`](favicon.ico) (16/32/48 px, Fallback für ältere Browser) und
 [`apple-touch-icon.png`](apple-touch-icon.png) (180 px, iOS-Homescreen).
