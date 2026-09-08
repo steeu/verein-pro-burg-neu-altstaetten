@@ -8,7 +8,7 @@ bestehenden Website und die bereits getroffenen Entscheidungen.
 ## 1. Projekt
 
 Redesign der Website der **Vereinigung Pro Burg Neu-Altstätten** (Burgverein
-Lüchinga), erreichbar unter `burgverein.ch`.
+Lüchingen), erreichbar unter `burgverein.ch`.
 
 Die bestehende Seite läuft auf **Jimdo Creator**. Sie wird durch einen
 Neuaufbau ersetzt. Ein technischer Import ist nicht vorgesehen — die
@@ -54,6 +54,9 @@ nachrangig.
   ⚠️ Die alte Seite verwendet durchgehend fälschlich den Backtick
   (`153\`000.- Sfr.`). Beim Übertragen korrigieren.
 - **Währung:** «CHF», nicht «Sfr.» wie auf der alten Seite.
+- **Ortsname:** «Lüchingen» (Hochdeutsch), nicht die Mundartform «Lüchinga».
+  ⚠️ Die alte Seite und frühere Entwürfe nutzten «Burgverein Lüchinga»;
+  auf Wunsch des Vorstands durchgehend auf «Burgverein Lüchingen» geändert.
 - **Ton:** freundlich, ein bisschen augenzwinkernd. Der bestehende Auftritt
   lebt davon («Wir Mitglieder des Burgvereins sind also eine Art moderne
   Ritter!»). Diesen Charakter beim Umschreiben erhalten — nicht in
@@ -113,7 +116,7 @@ Ein-Satz-Absätze, die zusammengezogen gehören), inhaltlich nichts erfinden.
 H1: «Alter schützt vor Liebe nicht, aber Liebe vor dem Altern.»
 
 > Wir lieben unsere Burg, darum schützen wir sie, auch vor dem Altern!
-> Willkommen beim Burgverein Lüchinga.
+> Willkommen beim Burgverein Lüchingen.
 
 Call-to-Action: «Ich möchte auch Mitglied werden» → `/mitglied-werden/`
 
