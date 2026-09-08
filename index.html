@@ -148,7 +148,6 @@
   }
   .nav-link:hover{ background:var(--surface-raised); color:var(--text); }
   .nav-link[aria-current="page"]{ color:var(--text); border-left-color:var(--brass); background:var(--surface-raised); }
-  .nav-secondary .nav-link{ font-size:.82rem; font-weight:400; }
 
   .nav-foot{ margin-top:auto; font-size:.75rem; color:var(--text-muted); line-height:1.5; }
 
@@ -404,16 +403,11 @@
   }
   @media (max-width:640px){ .gallery{ columns:2 10rem; } }
 
-  /* ============ Kontakt / Impressum / Datenschutz ============ */
+  /* ============ Kontakt ============ */
   .kv-list{ margin-top:1.4rem; display:flex; flex-direction:column; gap:.9rem; max-width:52ch; }
   .kv-row{ display:flex; gap:1rem; border-bottom:1px solid var(--border); padding-bottom:.7rem; }
   .kv-row dt{ flex:0 0 9rem; font-weight:700; font-size:.85rem; color:var(--text-muted); }
   .kv-row dd{ margin:0; }
-  .kv-row dd .todo{ color:var(--text-muted); font-style:italic; }
-
-  article.legal h3{ margin-top:1.8rem; margin-bottom:.5rem; }
-  article.legal h3:first-child{ margin-top:0; }
-  article.legal p{ max-width:66ch; margin-top:.6rem; color:var(--text-muted); }
 
   footer.page-foot{ margin-top:3.5rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:.8rem; color:var(--text-muted); }
 
@@ -464,10 +458,6 @@
         <a class="nav-link" data-route="geschichte" href="#/geschichte">Geschichte der Burg</a>
         <a class="nav-link" data-route="impressionen" href="#/impressionen">Impressionen</a>
         <a class="nav-link" data-route="kontakt" href="#/kontakt">Kontakt</a>
-      </nav>
-      <nav class="nav-group nav-secondary" aria-label="Rechtliches">
-        <a class="nav-link" data-route="impressum" href="#/impressum">Impressum</a>
-        <a class="nav-link" data-route="datenschutz" href="#/datenschutz">Datenschutz</a>
       </nav>
       <p class="nav-foot">
         Damit die Burg auch in 500&nbsp;Jahren noch so gut aussieht.
@@ -573,7 +563,7 @@
 
         <label class="consent">
           <input type="checkbox" required>
-          <span>Ich habe die <a href="#/datenschutz" class="link">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben einverstanden. <span class="req" style="color:var(--wine)">*</span></span>
+          <span>Ich bin mit der Verarbeitung meiner Angaben zur Bearbeitung meiner Mitgliedschaft einverstanden. <span class="req" style="color:var(--wine)">*</span></span>
         </label>
 
         <div class="btn-row">
@@ -716,47 +706,8 @@
       </dl>
     </section>
 
-    <!-- ---------- IMPRESSUM ---------- -->
-    <section class="page" id="page-impressum" data-title="Impressum">
-      <div class="page-head">
-        <span class="eyebrow">Impressum</span>
-        <h2>Angaben gemäss Vereinsstatuten.</h2>
-      </div>
-      <dl class="kv-list">
-        <div class="kv-row"><dt>Verein</dt><dd>Vereinigung Pro Burg Neu-Altstätten, gegründet 8. Mai 1976</dd></div>
-        <div class="kv-row"><dt>Sitz</dt><dd class="todo">wird ergänzt</dd></div>
-        <div class="kv-row"><dt>Vertretung</dt><dd>Mario Sonderegger, Präsident</dd></div>
-        <div class="kv-row"><dt>Kontakt</dt><dd><a class="link" href="#/kontakt">siehe Kontakt-Seite</a></dd></div>
-        <div class="kv-row"><dt>Verantwortlich für den Inhalt</dt><dd class="todo">wird ergänzt</dd></div>
-      </dl>
-    </section>
-
-    <!-- ---------- DATENSCHUTZ ---------- -->
-    <section class="page" id="page-datenschutz" data-title="Datenschutz">
-      <div class="page-head">
-        <span class="eyebrow">Datenschutz</span>
-        <h2>Wie wir mit Ihren Daten umgehen.</h2>
-      </div>
-      <article class="legal">
-        <h3>Verantwortliche Stelle</h3>
-        <p>Vereinigung Pro Burg Neu-Altstätten («Burgverein Lüchinga»), vertreten durch den Vorstand.</p>
-
-        <h3>Welche Daten wir erheben</h3>
-        <p>Beim Ausfüllen des Anmeldeformulars erheben wir Vorname, Name, Adresse, PLZ/Ort, E-Mail-Adresse sowie die gewählte Mitgliedschaft. Diese Angaben werden per E-Mail an den Vorstand übermittelt und für die Vereinsverwaltung sowie den Versand der Einzahlungseinladung verwendet.</p>
-
-        <h3>Zahlung über Payrexx</h3>
-        <p>Wer den Mitgliedsbeitrag direkt online bezahlt, wird dafür an den Zahlungsdienstleister Payrexx AG weitergeleitet. Payrexx verarbeitet die für die Zahlung nötigen Daten gemäss eigener Datenschutzerklärung; wir erhalten von Payrexx lediglich die Bestätigung der Zahlung.</p>
-
-        <h3>Aufbewahrung</h3>
-        <p>Wir bewahren Ihre Angaben so lange auf, wie es für die Mitgliedschaft und die gesetzlichen Aufbewahrungspflichten erforderlich ist.</p>
-
-        <h3>Ihre Rechte</h3>
-        <p>Sie können jederzeit Auskunft über die zu Ihrer Person gespeicherten Daten verlangen und deren Berichtigung oder Löschung verlangen. Wenden Sie sich dazu an den Vorstand, siehe Kontakt-Seite.</p>
-      </article>
-    </section>
-
     <footer class="page-foot">
-      © 2026 Vereinigung Pro Burg Neu-Altstätten · <a href="#/impressum">Impressum</a> · <a href="#/datenschutz">Datenschutz</a>
+      © 2026 Vereinigung Pro Burg Neu-Altstätten
     </footer>
   </main>
 </div>
@@ -770,9 +721,7 @@
     '/wer-wir-sind': 'wer',
     '/geschichte': 'geschichte',
     '/impressionen': 'impressionen',
-    '/kontakt': 'kontakt',
-    '/impressum': 'impressum',
-    '/datenschutz': 'datenschutz'
+    '/kontakt': 'kontakt'
   };
   var pages = document.querySelectorAll('.page');
   var navLinks = document.querySelectorAll('.nav-link');

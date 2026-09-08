@@ -36,7 +36,8 @@ nachrangig.
 **Rahmenbedingungen:**
 
 - Statische Seite, Deployment voraussichtlich Netlify oder GitHub Pages
-- Sieben Inhaltsseiten plus Impressum und Datenschutz
+- Sieben Inhaltsseiten, ohne separate Impressum-/Datenschutz-Seite
+  (siehe Abschnitt 4)
 - Gepflegt von Vorstandsmitgliedern im Milizsystem, nicht von Entwicklern.
   Wartungsarmut geht vor Raffinesse. Keine Build-Ketten, die in zwei Jahren
   niemand mehr zum Laufen bringt.
@@ -75,14 +76,24 @@ Bestehende Navigation, in dieser Reihenfolge:
 | Projekte vom Verein | `/projekte-vom-verein/` | übernehmen, inhaltlich stärkste Seite |
 | Wer wir sind – Ziele | `/wer-wir-sind-ziele/` | übernehmen |
 | Geschichte der Burg | `/geschichte-der-burg/` | übernehmen |
-| Impressionen | `/impressionen/` | Bildergalerie, Inhalt noch zu erfassen |
-| Kontakt | `/kontakt/` | Inhalt noch zu erfassen |
-| Impressum | `/about/` | URL beim Neuaufbau auf `/impressum/` ändern |
-| Datenschutz | `/j/privacy` | war Jimdo-generiert, muss neu geschrieben werden |
+| Impressionen | `/impressionen/` | übernehmen |
+| Kontakt | `/kontakt/` | übernehmen |
 
-**Redirects:** Wenn URLs sich ändern, 301 einrichten. Betrifft mindestens
-`/about/` → `/impressum/` und `/j/privacy` → `/datenschutz/`. Alle anderen
-Pfade unverändert lassen, dann entfällt der Rest.
+> **Entscheid:** Impressum (`/about/`) und Datenschutz (`/j/privacy`) sind im
+> Neuaufbau bewusst **nicht** übernommen — auf Wunsch entfernt. Die alte
+> Impressum-Seite war ohnehin inhaltlich leer (nur Jimdo-Boilerplate), die
+> Datenschutzerklärung war Jimdo-generiert und nicht übertragbar.
+>
+> ⚠️ Zu bedenken, falls das nochmals aufkommt: Das Anmeldeformular auf
+> «Mitglied werden» erhebt weiterhin Name, Adresse und E-Mail-Adresse. Für
+> eine Schweizer Vereinswebsite, die aktiv Personendaten sammelt, ist eine
+> Datenschutzerklärung fachlich üblich, auch ohne dass eine feste Impressumspflicht
+> im gleichen Mass wie bei kommerziellen Anbietern besteht. Das ist eine
+> bewusste Entscheidung des Vorstands, keine versehentliche Lücke.
+
+**Redirects:** Wenn URLs sich ändern, 301 einrichten. Alte Pfade wie
+`/about/` oder `/j/privacy` haben im Neuaufbau kein Ziel mehr und sollten auf
+die Startseite umgeleitet werden, sobald die Domain umgestellt wird.
 
 **Meta-Beschreibungen:** Auf der alten Seite sind sie durchgehend leer, Jimdo
 nimmt ersatzweise den ersten Absatz. Das führt bei «Wer wir sind» zu einem
@@ -369,9 +380,10 @@ wenn dort deployed wird; sonst ein Dienst wie Formspree oder Tally.
 
 **Datenschutz:** Es werden Name, Adresse und E-Mail erhoben. Schweizer DSG.
 Der Formular-Dienst sollte in der Schweiz oder der EU hosten. Wer online
-bezahlt, wird zusätzlich an Payrexx weitergeleitet — auch das gehört in die
-Datenschutzerklärung. Die alte, von Jimdo generierte Erklärung ist nicht
-übertragbar und muss neu verfasst werden.
+bezahlt, wird zusätzlich an Payrexx weitergeleitet. Eine eigene
+Datenschutzseite gibt es auf Wunsch aktuell nicht (siehe Abschnitt 4) — das
+Einverständnis wird nur noch über die Checkbox im Formular eingeholt, ohne
+Verlinkung auf einen Erklärungstext.
 
 **Spamschutz:** Honeypot-Feld reicht für einen Verein dieser Grösse. Kein
 Captcha, das schreckt ältere Mitglieder ab.
@@ -418,11 +430,12 @@ Payrexx</a>` ersetzen.
 
 ## 9. Offene Punkte
 
-> ⚠️ **Vor dem Umbiegen von `burgverein.ch` auf diese Seite:** Impressum und
-> Datenschutzerklärung sind inhaltlich unvollständig bzw. ungeprüft (siehe
-> unten). Beides sollte stehen, bevor die Domain wirklich umgestellt wird —
-> bis dahin eignet sich die `github.io`-Adresse für Vorschau und
-> Vorstandsreview.
+> ⚠️ **Vor dem Umbiegen von `burgverein.ch` auf diese Seite:** Es gibt aktuell
+> keine Impressum- oder Datenschutzseite (bewusster Entscheid, siehe
+> Abschnitt 4). Das Anmeldeformular sammelt aber weiterhin Personendaten —
+> falls das für den Live-Betrieb nochmals überdacht werden soll, hier
+> nachfragen. Bis zur Domain-Umstellung eignet sich die `github.io`-Adresse
+> für Vorschau und Vorstandsreview.
 
 - [ ] Technischer Stack endgültig festlegen (Abschnitt 2) — aktuell reines
       HTML, funktioniert bereits per GitHub Pages
@@ -435,11 +448,6 @@ Payrexx</a>` ersetzen.
       (Abschnitt 6, `bilder/`)
 - [ ] Meta-Beschreibungen für alle Seiten schreiben (aktuell nur eine
       generische Beschreibung für die ganze Seite, da Hash-Routing)
-- [ ] Datenschutzerklärung fachlich prüfen lassen — Text in `index.html`
-      ist ein Entwurfsgerüst, kein geprüfter Rechtstext
-- [ ] Impressum-Angaben liefern — auf der alten Seite (`/about/`) inhaltlich
-      leer, nur Jimdo-Boilerplate; Verein, Sitz, Vertretung müssen neu
-      zusammengetragen werden
 - [ ] Entscheiden, ob ein Redaktions-Tool (z. B. Decap CMS) dazukommt
 - [ ] Drei Payrexx-Paylinks erstellen (Einzelmitglied/Familie/Unternehmen)
       und in `index.html` verlinken (Abschnitt 8)
@@ -480,7 +488,7 @@ das ist bewusst noch nicht eingerichtet, da es die aktuelle Jimdo-Seite unter
 derselben Domain ablösen würde. Erst umstellen, wenn die Punkte in
 Abschnitt 9 erledigt sind.
 
-Die Seite deckt alle neun Seiten aus Abschnitt 4 ab, inklusive automatisch
+Die Seite deckt alle sieben Seiten aus Abschnitt 4 ab, inklusive automatisch
 berechnetem Versammlungsdatum (Abschnitt 5.1), allen 49 Bildern aus
 Abschnitt 6 und einem vorbereiteten, aber noch deaktivierten Bereich für die
 Payrexx-Online-Zahlung (Abschnitt 8). Interne Arbeitsnotizen («Für den
