@@ -131,16 +131,21 @@ das Datum an genau einer Stelle ändern kann.
 
 ### 5.2 Mitglied werden
 
-Formularfelder (bestehend):
+> **Neu (Entwurf, Vorstands-OK ausstehend):** Kein eigenes Anmeldeformular mehr.
+> Die Anmeldung erfolgt durch Bezahlung des Jahresbeitrags über Payrexx — dort
+> werden dieselben Angaben als Pflicht-Zusatzfelder erhoben. Details in
+> Abschnitt 7.
+
+Erhobene Angaben (jetzt in der Payrexx-Bezahlseite):
 
 - Vorname
 - Name
 - Strasse/Nr.
 - PLZ/Ort
 - E-Mail
-- Mitgliedschaft (Auswahl: Einzelmitglied / Familie / Unternehmen-Verein)
-
-Pflichtfelder waren mit `*` gekennzeichnet. Datenschutzerklärung ist verlinkt.
+- Stufe ergibt sich aus der gewählten Kachel (Einzelmitglied / Familie /
+  Unternehmen-Verein)
+- optional: weitere Personen (Familienmitgliedschaft)
 
 **Beiträge:**
 
@@ -376,65 +381,73 @@ dieser Reihenfolge von der alten Seite übernommen):
 
 ---
 
-## 7. Anmeldeformular
+## 7. Anmeldung über Payrexx (kein eigenes Formular mehr)
 
-Die Kernfunktion der Website. Anforderung: **Formulareingaben gehen per E-Mail
-an eine Vereinsadresse.** Zusätzlich, seit dieser Entwurfsrunde: Mitglieder
-können den Jahresbeitrag optional direkt im Anschluss online bezahlen, per
-Payrexx-Paylink (siehe Abschnitt 8 — nicht mehr «später», sondern Teil des
-ersten Wurfs).
+> **Entscheid dieser Entwurfsrunde — Vorstands-OK ausstehend:** Das früher
+> geplante Anmeldeformular mit E-Mail-Versand entfällt. Die **Bezahlung des
+> Jahresbeitrags über Payrexx ist die Anmeldung.** Damit fallen auch der
+> Formular-Backend-Dienst (Netlify Forms / Formspree) und der Honeypot weg —
+> weniger bewegliche Teile, passt zum Grundsatz «Wartungsarmut vor Raffinesse».
 
-Auf einer statischen Seite braucht es für den E-Mail-Versand einen externen
-Dienst, weil kein Server zur Verfügung steht. Netlify Forms ist naheliegend,
-wenn dort deployed wird; sonst ein Dienst wie Formspree oder Tally.
+Ablauf auf «Mitglied werden»:
 
-**Datenschutz:** Es werden Name, Adresse und E-Mail erhoben. Schweizer DSG.
-Der Formular-Dienst sollte in der Schweiz oder der EU hosten. Wer online
-bezahlt, wird zusätzlich an Payrexx weitergeleitet. Eine eigene
-Datenschutzseite gibt es auf Wunsch aktuell nicht (siehe Abschnitt 4) — das
-Einverständnis wird nur noch über die Checkbox im Formular eingeholt, ohne
-Verlinkung auf einen Erklärungstext.
+1. Stufe wählen, Button «Mitglied werden».
+2. Payrexx-Bezahlseite: Pflicht-Zusatzfelder Vorname, Name, Strasse/Nr.,
+   PLZ/Ort, E-Mail; optional «weitere Personen» (Familie). Beitrag per
+   **TWINT, Karte oder «Rechnung / Überweisung»**.
+3. Payrexx schickt eine Bestätigung ans Mitglied **und** an
+   `info@burgverein.ch` (Benachrichtigungs-Einstellung im Payrexx-Konto).
 
-**Spamschutz:** Honeypot-Feld reicht für einen Verein dieser Grösse. Kein
-Captcha, das schreckt ältere Mitglieder ab.
+Die Adresse aus den Zusatzfeldern genügt für den postalischen Versand von
+Einladung und Weingutschein. Wer «Rechnung / Überweisung» wählt, erhält die
+QR-Rechnung wie bisher per Post vom Kassier — «auf Rechnung» bleibt damit
+abgedeckt.
+
+**Fallback ohne Payrexx:** ein `mailto:info@burgverein.ch`-Link auf der Seite
+für alle, die lieber persönlich anfragen.
+
+**Datenschutz:** Name, Adresse, E-Mail werden neu bei Payrexx (Thun, CH)
+erhoben — DSG-seitig unkritischer als ein Drittdienst im Ausland. Das
+Einverständnis holt Payrexx im eigenen Checkout ein; die frühere
+Consent-Checkbox auf der Website entfällt mit dem Formular. Eine eigene
+Datenschutzseite gibt es weiterhin nicht (siehe Abschnitt 4).
+
+**Im Payrexx-Konto zu prüfen:** ob Pflicht-Zusatzfelder und die Methode
+«Kauf auf Rechnung / Überweisung» im gewählten Abo/PSP enthalten sind (teils
+planabhängig). Spamschutz braucht es keinen mehr — Payrexx übernimmt das.
 
 ---
 
-## 8. Zahlungen — jetzt Teil der Anmeldung
+## 8. Zahlung / Payrexx-Konto
 
-> Ursprünglich als späterer Ausbau vorgesehen (siehe Versionsgeschichte);
-> seit dieser Entwurfsrunde direkt in die Anmeldeseite integriert.
-
-Mitglieder können den Jahresbeitrag bei der Anmeldung optional sofort online
-bezahlen, per Karte oder TWINT, über einen Payrexx-Paylink. **Bewusst
-entkoppelt von der übrigen Website** — der Paylink ist nur ein verlinkter
-Button, keine Integration in den Code. Das lässt den Stack weiterhin frei
-wählbar.
-
-**Ist-Zustand parallel dazu:** Nach der Anmeldung verschickt der Kassier wie
-bisher eine QR-Rechnung per Post. Wer nicht online bezahlen möchte, wartet
-einfach darauf. «Auf Rechnung» ist damit weiterhin abgedeckt.
+Die Zahlung **ist** die Anmeldung (Abschnitt 7). **Bewusst entkoppelt von der
+übrigen Website** — es sind nur drei verlinkte Buttons, keine
+Code-Integration. Das lässt den Stack weiterhin frei wählbar.
 
 **Umsetzung:** Payrexx (Thun) ist bei Schweizer Vereinen verbreitet. Pro
 Mitgliedschaftsstufe (Einzelmitglied CHF 40.–, Familie CHF 70.–, Unternehmen/
-Verein CHF 100.–) braucht es im Payrexx-Konto einen eigenen Paylink — eine
-vorbefüllte Zahlseite mit fixem Betrag —, dessen URL als Button auf der
-Anmeldeseite (und optional in der Bestätigungsmail) verlinkt wird. Der
-Free-Plan hat keine monatlichen Fixkosten, gemeinnützige Organisationen
-erhalten 50 % Rabatt auf die kostenpflichtigen Abos.
+Verein CHF 100.–) braucht es im Payrexx-Konto eine eigene **Bezahlseite** mit
+fixem Betrag und den Pflicht-Zusatzfeldern aus Abschnitt 7, deren URL als
+Button auf «Mitglied werden» verlinkt wird. Der Free-Plan hat keine
+monatlichen Fixkosten, gemeinnützige Organisationen erhalten 50 % Rabatt auf
+die kostenpflichtigen Abos.
 
-TWINT ist in der Schweiz wichtiger als die Kreditkarte. Gebühren im Free-Plan
-rund 1.30 % + CHF 0.30 (TWINT) bzw. 2.50 % + CHF 0.30 (Visa/Mastercard) — bei
+TWINT ist in der Schweiz wichtiger als die Kreditkarte. Gebühren rund
+1.30 % + CHF 0.30 (TWINT) bzw. 2.50 % + CHF 0.30 (Visa/Mastercard) — bei
 CHF 40 Jahresbeitrag also etwa 80 Rappen bzw. CHF 1.30 pro Mitglied.
+⚠️ Neu: diese Gebühr fällt bei **jeder** online bezahlten Mitgliedschaft an;
+bei «Rechnung / Überweisung» meist tiefer oder null. Bisher (QR-Rechnung per
+Post) fiel keine Gebühr an.
 
-In [`index.html`](index.html) ist der Bereich «Beitrag direkt online
-bezahlen» auf der Seite «Mitglied werden» als deaktivierte «Bald verfügbar»-
-Buttons angelegt, ohne Ziel-URL, damit auf der veröffentlichten Seite nichts
-kaputt oder wie ein Platzhalter wirkt. Sobald die drei Paylinks im
-Payrexx-Konto erstellt sind: im Quellcode den Kommentar direkt über dem
-`pay-grid`-Block suchen und die drei `<span class="btn ...">` durch
-`<a class="btn btn-ghost btn-block" href="[Paylink-URL]">Bezahlen mit
-Payrexx</a>` ersetzen.
+In [`index.html`](index.html) sind auf «Mitglied werden» drei Kacheln mit
+Button «Mitglied werden». Die Buttons zeigen als Platzhalter auf
+`#/mitglied-werden` (bleibt auf der Seite, nichts kaputt). Sobald die drei
+Payrexx-Bezahlseiten stehen:
+
+1. je `href="#/mitglied-werden"` durch die Bezahlseiten-URL ersetzen,
+2. die Vorschau-Hinweiszeile entfernen (`<p class="pay-note">` mit
+   «Hinweis zur Vorschau …»),
+3. Benachrichtigung an `info@burgverein.ch` im Payrexx-Konto aktivieren.
 
 ---
 
@@ -442,10 +455,10 @@ Payrexx</a>` ersetzen.
 
 > ⚠️ **Vor dem Umbiegen von `burgverein.ch` auf diese Seite:** Es gibt aktuell
 > keine Impressum- oder Datenschutzseite (bewusster Entscheid, siehe
-> Abschnitt 4). Das Anmeldeformular sammelt aber weiterhin Personendaten —
-> falls das für den Live-Betrieb nochmals überdacht werden soll, hier
-> nachfragen. Bis zur Domain-Umstellung eignet sich die `github.io`-Adresse
-> für Vorschau und Vorstandsreview.
+> Abschnitt 4). Die Anmeldung über Payrexx erhebt aber Personendaten (Name,
+> Adresse, E-Mail) — falls das für den Live-Betrieb nochmals überdacht werden
+> soll, hier nachfragen. Bis zur Domain-Umstellung eignet sich die
+> `github.io`-Adresse für Vorschau und Vorstandsreview.
 
 - [ ] Technischer Stack endgültig festlegen (Abschnitt 2) — aktuell reines
       HTML, funktioniert bereits per GitHub Pages
@@ -459,8 +472,12 @@ Payrexx</a>` ersetzen.
 - [ ] Meta-Beschreibungen für alle Seiten schreiben (aktuell nur eine
       generische Beschreibung für die ganze Seite, da Hash-Routing)
 - [ ] Entscheiden, ob ein Redaktions-Tool (z. B. Decap CMS) dazukommt
-- [ ] Drei Payrexx-Paylinks erstellen (Einzelmitglied/Familie/Unternehmen)
-      und in `index.html` verlinken (Abschnitt 8)
+- [ ] **Vorstands-OK:** Anmeldung nur noch über Payrexx statt eigenem
+      Formular (Abschnitt 7)
+- [ ] Drei Payrexx-Bezahlseiten erstellen (Einzelmitglied/Familie/Unternehmen)
+      — mit Pflicht-Zusatzfeldern und Benachrichtigung an `info@burgverein.ch` —,
+      in `index.html` verlinken und die Vorschau-Hinweiszeile entfernen
+      (Abschnitt 7/8)
 - [ ] Eigenen Google-Maps-API-Schlüssel besorgen, falls die Kontakt-Seite
       eine eingebettete Karte statt nur einen Link erhalten soll
 - [ ] Custom Domain (`burgverein.ch`) auf GitHub Pages einrichten, sobald
@@ -500,8 +517,9 @@ Abschnitt 9 erledigt sind.
 
 Die Seite deckt alle sieben Seiten aus Abschnitt 4 ab, inklusive automatisch
 berechnetem Versammlungsdatum (Abschnitt 5.1), allen 49 Bildern aus
-Abschnitt 6 und einem vorbereiteten, aber noch deaktivierten Bereich für die
-Payrexx-Online-Zahlung (Abschnitt 8). Interne Arbeitsnotizen («Für den
-Vorstand») sind nicht mehr auf der Seite selbst, sondern ausschliesslich hier
-in dieser Datei festgehalten (Abschnitt 9) — die Seite zeigt nur noch
-Inhalte, die auch wirklich für Besucherinnen und Besucher bestimmt sind.
+Abschnitt 6 und den drei Payrexx-Kacheln auf «Mitglied werden»
+(Abschnitt 7/8). Interne Arbeitsnotizen gehören in diese Datei, nicht auf die
+Seite — **eine Ausnahme** ist die aktuell sichtbare Zeile «Hinweis zur
+Vorschau …» auf «Mitglied werden», die den Vorstand über die Platzhalter-
+Buttons informiert; sie wird zusammen mit dem Verlinken der echten
+Bezahlseiten entfernt (Abschnitt 8).

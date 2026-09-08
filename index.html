@@ -258,62 +258,21 @@
     th,td{ padding:.6rem .7rem; font-size:.9rem; }
   }
 
-  /* ============ Forms ============ */
-  fieldset{ border:none; padding:0; margin:0; }
-  .field-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.6rem; }
-  .field{ display:flex; flex-direction:column; gap:.35rem; }
-  .field.full{ grid-column:1 / -1; }
-  .field label{ font-size:.85rem; font-weight:700; }
-  .field label .req{ color:var(--wine); font-weight:400; }
-  .field input[type="text"],
-  .field input[type="email"]{
-    background:var(--surface-raised);
-    border:1px solid var(--border);
-    border-radius:6px;
-    padding:.65rem .8rem;
-    font-size:1rem;
-    color:var(--text);
-    font-family:inherit;
+  /* ============ Mitglied werden — Schritte ============ */
+  .steps{ counter-reset:step; margin-top:1.3rem; display:flex; flex-direction:column; gap:.8rem; max-width:60ch; }
+  .steps li{ position:relative; padding-left:2.7rem; }
+  .steps li::before{
+    counter-increment:step; content:counter(step);
+    position:absolute; left:0; top:-.15rem;
+    width:1.8rem; height:1.8rem; border-radius:50%;
+    background:var(--brass-tint); border:1px solid var(--brass);
+    color:var(--brass); font-weight:700; font-size:.9rem;
+    display:flex; align-items:center; justify-content:center;
   }
-  .field input:focus-visible{ border-color:var(--brass); }
-  .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
-  @media (max-width:640px){ .field-grid{ grid-template-columns:1fr; } }
-
-  .tier-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin-top:.5rem; }
-  @media (max-width:640px){ .tier-grid{ grid-template-columns:1fr; } }
-  .tier{ position:relative; }
-  .tier input{ position:absolute; opacity:0; inset:0; width:100%; height:100%; margin:0; cursor:pointer; }
-  .tier-card{
-    border:1px solid var(--border);
-    background:var(--surface-raised);
-    border-radius:8px;
-    padding:.9rem 1rem;
-    display:flex;
-    flex-direction:column;
-    gap:.15rem;
-  }
-  .tier input:checked + .tier-card{ border-color:var(--brass); background:var(--brass-tint); }
-  .tier input:focus-visible + .tier-card{ outline:3px solid var(--focus); outline-offset:2px; }
-  .tier-name{ font-weight:700; font-size:.92rem; }
-  .tier-price{ font-family:"Fraunces",serif; font-weight:700; font-size:1.3rem; font-variant-numeric:tabular-nums; }
-
-  .consent{ display:flex; align-items:flex-start; gap:.6rem; margin-top:1.4rem; font-size:.9rem; max-width:60ch; }
-  .consent input{ margin-top:.25rem; flex:0 0 auto; }
-
-  .confirm-panel{
-    display:none;
-    margin-top:1.6rem;
-    padding:1.1rem 1.3rem;
-    background:var(--brass-tint);
-    border:1px solid var(--brass);
-    border-radius:8px;
-    font-size:.95rem;
-  }
-  .confirm-panel.is-visible{ display:block; }
-  .confirm-panel strong{ display:block; margin-bottom:.3rem; font-family:"Fraunces",serif; font-size:1.05rem; }
+  .pay-note{ margin-top:1rem; font-size:.85rem; color:var(--text-muted); max-width:62ch; }
 
   /* ============ Payrexx tiles ============ */
-  .pay-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:.9rem; margin-top:1.3rem; }
+  .pay-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:.9rem; margin-top:1.4rem; }
   @media (max-width:640px){ .pay-grid{ grid-template-columns:1fr; } }
   .pay-tile{
     border:1px solid var(--border);
@@ -322,18 +281,11 @@
     padding:1.1rem 1.1rem 1.2rem;
     display:flex;
     flex-direction:column;
-    gap:.6rem;
-    position:relative;
+    gap:.5rem;
   }
-  .pay-tile.is-selected{ border-color:var(--brass); box-shadow:0 0 0 1px var(--brass); }
+  .pay-tile .tier-name{ font-weight:700; font-size:.92rem; }
   .pay-amount{ font-family:"Fraunces",serif; font-weight:700; font-size:1.6rem; font-variant-numeric:tabular-nums; }
-  .btn.is-disabled, .btn.is-disabled:hover{
-    cursor:default;
-    opacity:.6;
-    background:transparent;
-    border-color:var(--border);
-    color:var(--text-muted);
-  }
+  .pay-tile .btn{ margin-top:.35rem; }
 
   /* ============ Projekte — masonry timeline ============ */
   .wall{ margin-top:1.6rem; display:flex; flex-direction:column; gap:.55rem; }
@@ -545,9 +497,9 @@
         <h2>Werden Sie moderne Ritterin oder moderner Ritter.</h2>
       </div>
 
-      <p>Die Einladung mit Einzahlungsschein erfolgt nach der Anmeldung per Post. Im Jahresbeitrag ist ein Gutschein für eine 75-cl-Flasche Burgwein enthalten, der ausschliesslich an der Jahresversammlung eingelöst werden kann.</p>
+      <p class="lede">Die Anmeldung läuft neu direkt über den Jahresbeitrag: Stufe wählen, bei Payrexx Name und Adresse eintragen, Beitrag begleichen – ein separates Formular braucht es nicht mehr.</p>
 
-      <p>Die Jahresversammlung findet traditionell am 2. Freitag im August im Torkel der Burg statt und führt damit das einstige Burgfest im kleinen Rahmen weiter: gemütlich, gesellig und unserer Burg zuliebe. Neumitglieder sind herzlich willkommen.</p>
+      <p style="margin-top:1.2rem;">Im Jahresbeitrag ist ein Gutschein für eine 75-cl-Flasche Burgwein enthalten, der ausschliesslich an der Jahresversammlung eingelöst werden kann. Diese findet traditionell am 2. Freitag im August im Torkel der Burg statt und führt das einstige Burgfest im kleinen Rahmen weiter: gemütlich, gesellig und unserer Burg zuliebe. Neumitglieder sind herzlich willkommen.</p>
 
       <div class="table-wrap">
         <table>
@@ -560,81 +512,36 @@
         </table>
       </div>
 
-      <form id="anmeldeform" name="anmeldung" data-netlify="true" novalidate style="margin-top:2.2rem;">
-        <h3>Anmeldeformular</h3>
-        <p class="lede" style="font-size:.92rem;margin-top:.35rem;">Ihre Angaben gehen per E-Mail an den Vorstand. Felder mit <span style="color:var(--wine)">*</span> sind Pflichtfelder.</p>
+      <h3 style="margin-top:2.6rem;">So werden Sie Mitglied</h3>
+      <ol class="steps">
+        <li><strong>Stufe wählen</strong> und auf «Mitglied werden» klicken.</li>
+        <li>Bei <strong>Payrexx</strong> Name und Adresse eintragen und den Beitrag per <strong>TWINT, Karte oder Rechnung</strong> begleichen.</li>
+        <li>Fertig – die bezahlte oder ausgelöste Rechnung ist Ihre Anmeldung. Einladung und Weingutschein kommen per Post.</li>
+      </ol>
 
-        <div class="hp">
-          <label for="botfield">Nicht ausfüllen</label>
-          <input id="botfield" name="bot-field" type="text" tabindex="-1" autocomplete="off">
+      <div class="pay-grid">
+        <div class="pay-tile">
+          <span class="tier-name">Einzelmitglied</span>
+          <span class="pay-amount">CHF 40.–</span>
+          <a class="btn btn-block" href="#/mitglied-werden" data-payrexx>Mitglied werden</a>
         </div>
-
-        <div class="field-grid">
-          <div class="field"><label for="vorname">Vorname <span class="req">*</span></label><input id="vorname" name="vorname" type="text" required></div>
-          <div class="field"><label for="nachname">Name <span class="req">*</span></label><input id="nachname" name="nachname" type="text" required></div>
-          <div class="field full"><label for="strasse">Strasse / Nr. <span class="req">*</span></label><input id="strasse" name="strasse" type="text" required></div>
-          <div class="field"><label for="plz">PLZ / Ort <span class="req">*</span></label><input id="plz" name="plz" type="text" required></div>
-          <div class="field"><label for="email">E-Mail <span class="req">*</span></label><input id="email" name="email" type="email" required></div>
+        <div class="pay-tile">
+          <span class="tier-name">Familie</span>
+          <span class="pay-amount">CHF 70.–</span>
+          <a class="btn btn-block" href="#/mitglied-werden" data-payrexx>Mitglied werden</a>
         </div>
-
-        <div style="margin-top:1.4rem;">
-          <label style="font-size:.85rem;font-weight:700;">Mitgliedschaft <span class="req" style="color:var(--wine)">*</span></label>
-          <div class="tier-grid">
-            <label class="tier">
-              <input type="radio" name="mitgliedschaft" value="Einzelmitglied" data-price="40" required>
-              <span class="tier-card"><span class="tier-name">Einzelmitglied</span><span class="tier-price">CHF 40.–</span></span>
-            </label>
-            <label class="tier">
-              <input type="radio" name="mitgliedschaft" value="Familie" data-price="70">
-              <span class="tier-card"><span class="tier-name">Familie</span><span class="tier-price">CHF 70.–</span></span>
-            </label>
-            <label class="tier">
-              <input type="radio" name="mitgliedschaft" value="Unternehmen / Verein" data-price="100">
-              <span class="tier-card"><span class="tier-name">Unternehmen / Verein</span><span class="tier-price">CHF 100.–</span></span>
-            </label>
-          </div>
+        <div class="pay-tile">
+          <span class="tier-name">Unternehmen / Verein</span>
+          <span class="pay-amount">CHF 100.–</span>
+          <a class="btn btn-block" href="#/mitglied-werden" data-payrexx>Mitglied werden</a>
         </div>
-
-        <label class="consent">
-          <input type="checkbox" required>
-          <span>Ich bin mit der Verarbeitung meiner Angaben zur Bearbeitung meiner Mitgliedschaft einverstanden. <span class="req" style="color:var(--wine)">*</span></span>
-        </label>
-
-        <div class="btn-row">
-          <button class="btn" type="submit">Anmeldung senden</button>
-        </div>
-
-        <div class="confirm-panel" id="confirmPanel">
-          <strong>Danke für Ihre Anmeldung!</strong>
-          Sie erhalten in Kürze eine Einladung mit Einzahlungsschein per Post.
-        </div>
-      </form>
-
-      <div style="margin-top:2.8rem;">
-        <span class="eyebrow">Neu</span>
-        <h3 style="margin-top:.4rem;">Beitrag direkt online bezahlen</h3>
-        <p style="margin-top:.5rem;color:var(--text-muted);max-width:60ch;">Demnächst lässt sich der Jahresbeitrag optional sofort online per Karte oder TWINT bezahlen. Bis dahin gilt wie gewohnt die Einzahlung per QR-Rechnung nach der Anmeldung.</p>
-
-        <div class="pay-grid" id="payGrid">
-          <div class="pay-tile" data-tier="Einzelmitglied">
-            <span class="tier-name">Einzelmitglied</span>
-            <span class="pay-amount">CHF 40.–</span>
-            <span class="btn btn-ghost btn-block is-disabled" aria-disabled="true">Bald verfügbar</span>
-          </div>
-          <div class="pay-tile" data-tier="Familie">
-            <span class="tier-name">Familie</span>
-            <span class="pay-amount">CHF 70.–</span>
-            <span class="btn btn-ghost btn-block is-disabled" aria-disabled="true">Bald verfügbar</span>
-          </div>
-          <div class="pay-tile" data-tier="Unternehmen / Verein">
-            <span class="tier-name">Unternehmen / Verein</span>
-            <span class="pay-amount">CHF 100.–</span>
-            <span class="btn btn-ghost btn-block is-disabled" aria-disabled="true">Bald verfügbar</span>
-          </div>
-        </div>
-        <!-- Sobald die Payrexx-Paylinks bereitstehen: die drei <span class="btn ...is-disabled"> oben
-             durch <a class="btn btn-ghost btn-block" href="[Paylink-URL]">Bezahlen mit Payrexx</a> ersetzen. -->
       </div>
+
+      <p class="pay-note">Die Zahlung wickelt der Schweizer Zahldienst <strong>Payrexx</strong> (Thun) ab. Name und Adresse werden dort einmalig erfasst, damit Einladung und Gutschein per Post ankommen. Wer nicht sofort online zahlen möchte, wählt bei Payrexx «Rechnung / Überweisung» – die Einzahlung erfolgt dann wie gewohnt per QR-Rechnung.</p>
+
+      <p class="pay-note"><em>Hinweis zur Vorschau:</em> Die drei Buttons zeigen noch auf Platzhalter. Sobald die Payrexx-Bezahlseiten eingerichtet sind, führen sie direkt zur jeweiligen Zahlseite. Diese Zeile wird vor dem Livegang entfernt.</p>
+
+      <p style="margin-top:1.6rem;">Fragen, oder lieber persönlich anmelden? <a class="link" href="mailto:info@burgverein.ch?subject=Mitgliedschaft%20Burgverein">info@burgverein.ch</a></p>
     </section>
 
     <!-- ---------- PROJEKTE ---------- -->
@@ -829,22 +736,6 @@
     }
   }
 
-  // Anmeldeformular: Demo-Bestätigung + Payrexx-Kachel hervorheben
-  var form = document.getElementById('anmeldeform');
-  var confirmPanel = document.getElementById('confirmPanel');
-  var payTiles = document.querySelectorAll('.pay-tile');
-  if (form){
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      if (!form.checkValidity()){ form.reportValidity(); return; }
-      confirmPanel.classList.add('is-visible');
-      var checked = form.querySelector('input[name="mitgliedschaft"]:checked');
-      payTiles.forEach(function(t){
-        t.classList.toggle('is-selected', checked && t.getAttribute('data-tier') === checked.value);
-      });
-      confirmPanel.scrollIntoView({ behavior:'smooth', block:'center' });
-    });
-  }
 })();
 </script>
 </body>
