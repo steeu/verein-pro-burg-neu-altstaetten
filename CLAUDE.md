@@ -119,7 +119,7 @@ H1: «Alter schützt vor Liebe nicht, aber Liebe vor dem Altern.»
 > Wir lieben unsere Burg, darum schützen wir sie, auch vor dem Altern!
 > Willkommen bei der Vereinigung Pro Burg Neu-Altstätten.
 
-Call-to-Action: «Ich möchte auch Mitglied werden» → `/mitglied-werden/`
+Call-to-Action: «Ich möchte Mitglied werden» → `/mitglied-werden/`
 
 Terminhinweis (aktuell auf der Seite):
 
