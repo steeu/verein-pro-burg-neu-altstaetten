@@ -354,9 +354,19 @@
   .course-title{ font-weight:700; font-size:.98rem; }
   .course-amount{ text-align:right; font-variant-numeric:tabular-nums; font-weight:700; }
   @media (max-width:600px){
-    .course{ grid-template-columns:3.4rem 1fr auto; }
+    .course{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:baseline;
+      gap:.2rem 1rem;
+      padding:.85rem 1.05rem;
+    }
     .course:nth-child(even), .course:nth-child(odd){ margin-left:0; margin-right:0; }
     .course-thumb{ display:none; }
+    .course-year{ order:1; font-size:1.3rem; }
+    .course-amount{ order:2; margin-left:auto; text-align:right; color:var(--brass); }
+    .course > span:not(.course-year):not(.course-amount){ order:3; flex:0 0 100%; margin-top:.15rem; }
+    .course-title{ font-size:.95rem; }
   }
 
   /* ============ Vorstand nameplates ============ */
