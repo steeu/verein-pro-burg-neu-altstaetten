@@ -288,14 +288,19 @@ Alle Vorstandsmitglieder haben ein Porträtfoto (siehe Abschnitt 6).
 Reine Bildergalerie, kein Fliesstext. Die alte Seite hatte 31 Fotos, viele
 davon fast identisch (Burg von unten aus dem Rebberg) oder unruhige
 Innenräume. Auf Wunsch **stark ausgemistet auf 10 kuratierte Bilder**
-(`bilder/impressionen/01.jpg`–`10.jpg`), historische S/W-Aufnahme und
+(`bilder/impressionen/imp-01.jpg`–`imp-10.jpg`), historische S/W-Aufnahme und
 Federzeichnung komplett entfernt. Die Auswahl deckt ab: Anlage in der
-Landschaft (01, 02), Alter/Substanz des Baus (03), Denkmalschutz-Tafel
+Landschaft (01, 02, 10), Alter/Substanz des Baus (03), Denkmalschutz-Tafel
 «1969» (04), Innenräume (05 Kachelofen, 06 Stube, 07 Fensterlaibung),
-Eingang (08), Handwerks-Detail (09), Rebberg-Stimmung (10). Reihenfolge
-= Anzeigereihenfolge; die `alt`-Texte stehen als Array im Galerie-Script
-in [`index.html`](index.html). Die 21 aussortierten Originale sind aus dem
-Repo gelöscht (via Git-Historie wiederherstellbar).
+Eingang (08), Handwerks-Detail (09).
+
+**Layout** (Script in [`index.html`](index.html)): `imp-01` und `imp-10` als
+grosse, auf 2:1 beschnittene Feature-Bilder als Klammer oben/unten, dazwischen
+`imp-02`–`imp-09` in zwei Masonry-Spalten (natürliches Seitenverhältnis, per
+bekannter h/w-Ratio auf gleiche Höhe verteilt, zweite Spalte leicht nach
+unten versetzt). `alt`-Texte und Ratios stehen als Array im Script. Die 21
+aussortierten Originale sind aus dem Repo gelöscht (via Git wiederherstellbar);
+die `imp-`-Namen sind neu, damit Browser/CDN nicht die alten Bilder cachen.
 
 ### 5.7 Kontakt
 
