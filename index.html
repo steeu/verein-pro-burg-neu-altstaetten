@@ -470,16 +470,25 @@
     border-left:3px solid var(--brass); padding-left:1.1rem;
   }
 
-  /* ============ Gallery ============ */
-  .gallery{ display:flex; flex-direction:column; gap:.7rem; margin-top:1.5rem; }
-  .gallery img{ display:block; width:100%; border-radius:10px; box-shadow:var(--photo-shadow); }
-  .gallery-feature{ aspect-ratio:2 / 1; object-fit:cover; border-radius:12px; }
-  .gallery-cols{ display:flex; align-items:flex-start; gap:.7rem; }
-  .gallery-col{ flex:1 1 0; min-width:0; display:flex; flex-direction:column; gap:.7rem; }
-  .gallery-col:nth-child(even){ margin-top:2.5rem; }
+  /* ============ Gallery (quadratisches Raster, gleichmässige Fugen) ============ */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:.7rem;
+    grid-auto-flow:dense;
+    margin-top:1.5rem;
+  }
+  .gallery img{
+    display:block;
+    width:100%;
+    aspect-ratio:1;
+    object-fit:cover;
+    border-radius:10px;
+    box-shadow:var(--photo-shadow);
+  }
+  .gallery .g-big{ grid-column:span 2; grid-row:span 2; }
   @media (max-width:640px){
-    .gallery-feature{ aspect-ratio:16 / 10; }
-    .gallery-col:nth-child(even){ margin-top:1rem; }
+    .gallery{ grid-template-columns:repeat(2,1fr); }
   }
 
   /* ============ Kontakt ============ */
@@ -829,52 +838,31 @@
     dEl.textContent = d.toLocaleDateString('de-CH', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
   }
 
-  // Impressionen: kuratierte Galerie — zwei grosse Burgbilder als Klammer,
-  // dazwischen eine Masonry-Spalten-Anordnung.
+  // Impressionen: quadratisches Raster; imp-01 und imp-10 belegen 2×2.
+  // Reihenfolge so gewählt, dass grid-auto-flow:dense lückenlos aufgeht
+  // (16 Zellen bei 4 bzw. 2 Spalten).
   var gallery = document.getElementById('impressionenGallery');
   if (gallery){
-    // [datei, alt, seitenverhältnis h/w] — Verhältnis für die Spaltenbalance
     var GALLERY_PICS = [
-      ['imp-01', 'Die Burg Neu-Altstätten mit Ökonomiegebäude über dem Rebberg', 0.67],
-      ['imp-02', 'Der Wohnturm mit dem bemalten Fachwerkgiebel und die Scheune', 0.67],
-      ['imp-03', 'Aufsicht an der Turmmauer mit dem auskragenden Holzgang', 1.33],
-      ['imp-04', 'Steintafel: 1969 restauriert und unter den Schutz der Eidgenossenschaft gestellt', 0.67],
-      ['imp-05', 'Grüner Kachelofen mit blau-weiss bemalten Bordüren', 1.13],
-      ['imp-06', 'Getäferte Stube mit Erkerfenster und Fensterbank', 0.75],
-      ['imp-07', 'Blick aus einer tiefen Fensterlaibung über den Rebberg', 1.33],
-      ['imp-08', 'Treppe hoch zur blauen Rundbogentür der Burg', 0.67],
-      ['imp-09', 'Schmiedeeiserner Handlauf an der Bruchsteinmauer', 0.67],
-      ['imp-10', 'Die Burg über dem Rebberg, durch einen Brunnenstrahl fotografiert', 0.67]
+      ['imp-01', 'Die Burg Neu-Altstätten mit Ökonomiegebäude über dem Rebberg', true],
+      ['imp-02', 'Der Wohnturm mit dem bemalten Fachwerkgiebel und die Scheune'],
+      ['imp-03', 'Aufsicht an der Turmmauer mit dem auskragenden Holzgang'],
+      ['imp-04', 'Steintafel: 1969 restauriert und unter den Schutz der Eidgenossenschaft gestellt'],
+      ['imp-05', 'Grüner Kachelofen mit blau-weiss bemalten Bordüren'],
+      ['imp-06', 'Getäferte Stube mit Erkerfenster und Fensterbank'],
+      ['imp-07', 'Blick aus einer tiefen Fensterlaibung über den Rebberg'],
+      ['imp-10', 'Die Burg über dem Rebberg, durch einen Brunnenstrahl fotografiert', true],
+      ['imp-08', 'Treppe hoch zur blauen Rundbogentür der Burg'],
+      ['imp-09', 'Schmiedeeiserner Handlauf an der Bruchsteinmauer']
     ];
-    function makeImg(pic, cls){
+    GALLERY_PICS.forEach(function(pic){
       var img = document.createElement('img');
       img.src = 'bilder/impressionen/' + pic[0] + '.jpg';
       img.loading = 'lazy';
       img.alt = pic[1];
-      if (cls) img.className = cls;
-      return img;
-    }
-    function buildGallery(cols){
-      gallery.textContent = '';
-      gallery.appendChild(makeImg(GALLERY_PICS[0], 'gallery-feature'));
-      var wrap = document.createElement('div');
-      wrap.className = 'gallery-cols';
-      var columns = [], heights = [];
-      for (var c = 0; c < cols; c++){
-        var col = document.createElement('div');
-        col.className = 'gallery-col';
-        wrap.appendChild(col);
-        columns.push(col); heights.push(0);
-      }
-      GALLERY_PICS.slice(1, -1).forEach(function(pic){
-        var c = heights.indexOf(Math.min.apply(null, heights));
-        columns[c].appendChild(makeImg(pic));
-        heights[c] += pic[2] + 0.06; // + gap
-      });
-      gallery.appendChild(wrap);
-      gallery.appendChild(makeImg(GALLERY_PICS[GALLERY_PICS.length - 1], 'gallery-feature'));
-    }
-    buildGallery(2);
+      if (pic[2]) img.className = 'g-big';
+      gallery.appendChild(img);
+    });
   }
 
 })();

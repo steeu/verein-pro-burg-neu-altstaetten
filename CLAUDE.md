@@ -294,13 +294,16 @@ Landschaft (01, 02, 10), Alter/Substanz des Baus (03), Denkmalschutz-Tafel
 «1969» (04), Innenräume (05 Kachelofen, 06 Stube, 07 Fensterlaibung),
 Eingang (08), Handwerks-Detail (09).
 
-**Layout** (Script in [`index.html`](index.html)): `imp-01` und `imp-10` als
-grosse, auf 2:1 beschnittene Feature-Bilder als Klammer oben/unten, dazwischen
-`imp-02`–`imp-09` in zwei Masonry-Spalten (natürliches Seitenverhältnis, per
-bekannter h/w-Ratio auf gleiche Höhe verteilt, zweite Spalte leicht nach
-unten versetzt). `alt`-Texte und Ratios stehen als Array im Script. Die 21
-aussortierten Originale sind aus dem Repo gelöscht (via Git wiederherstellbar);
-die `imp-`-Namen sind neu, damit Browser/CDN nicht die alten Bilder cachen.
+**Layout** (Script + CSS in [`index.html`](index.html)): **quadratisches
+Raster** (`.gallery`, `grid`, 4 Spalten Desktop / 2 mobil, gleichmässige
+`.7rem`-Fugen, `object-fit:cover`). `imp-01` und `imp-10` belegen als
+`.g-big` je 2×2 Zellen (diagonal oben-links / unten-rechts), die übrigen
+acht je 1×1. Die Bildreihenfolge im Array ist so gewählt, dass
+`grid-auto-flow:dense` die 16 Zellen lückenlos füllt (4×4 bzw. 2×8) — keine
+Restlücken, keine ungleichen Zwischenräume. `alt`-Texte stehen im Array. Die
+21 aussortierten Originale sind aus dem Repo gelöscht (via Git
+wiederherstellbar); die `imp-`-Namen sind neu, damit Browser/CDN nicht die
+alten Bilder cachen.
 
 ### 5.7 Kontakt
 
