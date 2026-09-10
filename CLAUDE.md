@@ -285,9 +285,17 @@ Alle Vorstandsmitglieder haben ein Porträtfoto (siehe Abschnitt 6).
 
 ### 5.6 Impressionen
 
-Reine Bildergalerie, kein Fliesstext. Auf der alten Seite 31 Fotos rund um
-die Burg, ohne Bildunterschriften. Alle 31 sind heruntergeladen, siehe
-Abschnitt 6, und in [`index.html`](index.html) bereits eingebunden.
+Reine Bildergalerie, kein Fliesstext. Die alte Seite hatte 31 Fotos, viele
+davon fast identisch (Burg von unten aus dem Rebberg) oder unruhige
+Innenräume. Auf Wunsch **stark ausgemistet auf 10 kuratierte Bilder**
+(`bilder/impressionen/01.jpg`–`10.jpg`), historische S/W-Aufnahme und
+Federzeichnung komplett entfernt. Die Auswahl deckt ab: Anlage in der
+Landschaft (01, 02), Alter/Substanz des Baus (03), Denkmalschutz-Tafel
+«1969» (04), Innenräume (05 Kachelofen, 06 Stube, 07 Fensterlaibung),
+Eingang (08), Handwerks-Detail (09), Rebberg-Stimmung (10). Reihenfolge
+= Anzeigereihenfolge; die `alt`-Texte stehen als Array im Galerie-Script
+in [`index.html`](index.html). Die 21 aussortierten Originale sind aus dem
+Repo gelöscht (via Git-Historie wiederherstellbar).
 
 ### 5.7 Kontakt
 
@@ -322,11 +330,13 @@ Vereins.
 
 ## 6. Bilder
 
-> **Erledigt:** Alle 49 Bilder unten sind heruntergeladen und liegen in
-> Originalauflösung unter [`bilder/`](bilder/) — Logo, Hintergrundbild,
-> Geschichte, 6× Vorstand, 9× Projekte, 31× Impressionen. Die Jimdo-Quell-URLs
-> bleiben unten dokumentiert, sind aber ab Abschaltung der alten Seite
-> wertlos; massgeblich ist ab jetzt der Ordner im Repo.
+> **Erledigt:** Alle Bilder wurden von Jimdo heruntergeladen und liegen unter
+> [`bilder/`](bilder/) — Logo, Hintergrundbild, Geschichte, 6× Vorstand,
+> 9× Projekte, Impressionen. Die Jimdo-Quell-URLs bleiben unten dokumentiert,
+> sind aber ab Abschaltung der alten Seite wertlos; massgeblich ist ab jetzt
+> der Ordner im Repo. Die 31 ursprünglichen Impressionen-Fotos wurden später
+> auf 10 kuratierte reduziert (Abschnitt 5.6) und auf `01`–`10` umbenannt —
+> die ID-Liste unten entspricht nicht mehr dem aktuellen Bestand.
 
 Alle Bilder lagen auf Jimdos CDN (`image.jimcdn.com`) und mussten **einmalig
 heruntergeladen und ins Repository übernommen** werden, bevor die alte Seite
@@ -548,8 +558,9 @@ derselben Domain ablösen würde. Erst umstellen, wenn die Punkte in
 Abschnitt 9 erledigt sind.
 
 Die Seite deckt alle sieben Seiten aus Abschnitt 4 ab, inklusive automatisch
-berechnetem Versammlungsdatum (Abschnitt 5.1), allen 49 Bildern aus
-Abschnitt 6 und den drei Payrexx-Kacheln auf «Mitglied werden»
+berechnetem Versammlungsdatum (Abschnitt 5.1), den Bildern aus Abschnitt 6
+(Impressionen-Galerie auf 10 kuratierte reduziert, Abschnitt 5.6) und den
+drei Payrexx-Kacheln auf «Mitglied werden»
 (Abschnitt 7/8). Interne Arbeitsnotizen gehören in diese Datei, nicht auf die
 Seite — **eine Ausnahme** ist die aktuell sichtbare Zeile «Hinweis zur
 Vorschau …» auf «Mitglied werden», die den Vorstand über die Platzhalter-

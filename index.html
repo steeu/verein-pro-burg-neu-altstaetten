@@ -826,10 +826,21 @@
     dEl.textContent = d.toLocaleDateString('de-CH', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
   }
 
-  // Impressionen: Galerie aus den 31 archivierten Fotos aufbauen
+  // Impressionen: kuratierte Galerie
   var gallery = document.getElementById('impressionenGallery');
   if (gallery){
-    var GALLERY_TOTAL = 31;
+    var GALLERY_PICS = [
+      ['01', 'Die Burg Neu-Altstätten mit Ökonomiegebäude über dem Rebberg'],
+      ['02', 'Der Wohnturm mit dem bemalten Fachwerkgiebel und die Scheune'],
+      ['03', 'Aufsicht an der Turmmauer mit dem auskragenden Holzgang'],
+      ['04', 'Steintafel: 1969 restauriert und unter den Schutz der Eidgenossenschaft gestellt'],
+      ['05', 'Grüner Kachelofen mit blau-weiss bemalten Bordüren'],
+      ['06', 'Getäferte Stube mit Erkerfenster und Fensterbank'],
+      ['07', 'Blick aus einer tiefen Fensterlaibung über den Rebberg'],
+      ['08', 'Treppe hoch zur blauen Rundbogentür der Burg'],
+      ['09', 'Schmiedeeiserner Handlauf an der Bruchsteinmauer'],
+      ['10', 'Die Burg über dem Rebberg, durch einen Brunnenstrahl fotografiert']
+    ];
     function buildGallery(cols){
       gallery.textContent = '';
       var columns = [];
@@ -839,14 +850,13 @@
         gallery.appendChild(col);
         columns.push(col);
       }
-      for (var i = 1; i <= GALLERY_TOTAL; i++){
-        var n = (i < 10 ? '0' : '') + i;
+      GALLERY_PICS.forEach(function(pic, i){
         var img = document.createElement('img');
-        img.src = 'bilder/impressionen/' + n + '.jpg';
+        img.src = 'bilder/impressionen/' + pic[0] + '.jpg';
         img.loading = 'lazy';
-        img.alt = 'Impression rund um die Burg, Foto ' + n;
-        columns[(i - 1) % cols].appendChild(img);
-      }
+        img.alt = pic[1];
+        columns[i % cols].appendChild(img);
+      });
     }
     var galleryMQ = window.matchMedia('(max-width: 640px)');
     function syncGallery(){ buildGallery(galleryMQ.matches ? 2 : 3); }
