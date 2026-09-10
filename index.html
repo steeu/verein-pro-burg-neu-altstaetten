@@ -142,26 +142,38 @@
     border-bottom:1px solid var(--header-line);
     display:flex;
     justify-content:center;
-    align-items:center;
-    min-height:3.75rem;
   }
-  .nav-body{
-    display:flex;
+  .header-inner{
     width:100%;
     max-width:1180px;
+    min-height:3.75rem;
     padding:0 clamp(1.25rem,4vw,4rem);
+    display:flex;
+    align-items:center;
+    gap:1.25rem;
   }
-  .nav-group{
+  .brand{
+    font-family:"Fraunces", Georgia, serif;
+    font-weight:700;
+    font-size:1.2rem;
+    line-height:1;
+    letter-spacing:.005em;
+    color:var(--header-fg);
+    text-decoration:none;
+    white-space:nowrap;
+    transition:color .12s ease;
+  }
+  .brand:hover{ color:var(--header-accent); }
+  .nav-body{
+    margin-left:auto;
     display:flex;
     flex-wrap:wrap;
     align-items:center;
-    justify-content:center;
     gap:.15rem;
-    width:100%;
   }
   .nav-link{
     display:block;
-    padding:.5rem .8rem;
+    padding:.5rem .7rem;
     border-radius:8px;
     font-weight:600;
     font-size:.95rem;
@@ -480,8 +492,8 @@
   footer.page-foot{ max-width:var(--content-max); margin:3.5rem auto 0; padding-top:1.5rem; border-top:1px solid var(--border); font-size:.8rem; color:var(--text-muted); }
 
   /* ============ Mobile nav ============ */
-  @media (max-width:860px){
-    .site-header{ justify-content:center; padding:.55rem 1rem; min-height:0; }
+  @media (max-width:1024px){
+    .header-inner{ justify-content:space-between; padding:.5rem 1rem; min-height:0; }
     .nav-toggle{
       display:inline-flex; align-items:center; justify-content:center;
       background:transparent; border:0; border-radius:10px;
@@ -500,13 +512,13 @@
     .nav-toggle[aria-expanded="true"] svg .l3{ transform:translateY(-5px) rotate(-45deg); }
     .nav-body{
       display:none; position:absolute; top:100%; left:0; right:0;
-      max-width:none;
+      margin-left:0;
       background:var(--header-bg); border-bottom:1px solid var(--header-line);
       padding:.6rem .9rem 1.1rem; max-height:80vh; overflow-y:auto;
+      flex-direction:column; flex-wrap:nowrap; align-items:stretch; gap:.1rem;
       box-shadow:0 12px 24px rgba(0,0,0,0.28);
     }
-    .nav-body.is-open{ display:block; }
-    .nav-group{ flex-direction:column; flex-wrap:nowrap; align-items:stretch; justify-content:flex-start; gap:.1rem; }
+    .nav-body.is-open{ display:flex; }
     .nav-link{ padding:.7rem .8rem; }
     main{ padding-top:1.9rem; }
   }
@@ -516,7 +528,10 @@
 <body>
 <!-- ============ NAV (volle Breite) ============ -->
 <header class="site-header">
-  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navBody" aria-label="Menü">
+  <div class="header-inner">
+    <a class="brand" href="#/">Burgverein</a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navBody" aria-label="Menü">
       <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
         <line class="l1" x1="3" y1="7" x2="21" y2="7"/>
         <line class="l2" x1="3" y1="12" x2="21" y2="12"/>
@@ -524,17 +539,16 @@
       </svg>
     </button>
 
-    <div class="nav-body" id="navBody">
-      <nav class="nav-group" aria-label="Hauptnavigation">
-        <a class="nav-link" data-route="home" href="#/">Home</a>
-        <a class="nav-link" data-route="mitglied" href="#/mitglied-werden">Mitglied werden</a>
-        <a class="nav-link" data-route="projekte" href="#/projekte">Projekte</a>
-        <a class="nav-link" data-route="wer" href="#/wer-wir-sind">Wer wir sind</a>
-        <a class="nav-link" data-route="geschichte" href="#/geschichte">Geschichte</a>
-        <a class="nav-link" data-route="impressionen" href="#/impressionen">Impressionen</a>
-        <a class="nav-link" data-route="kontakt" href="#/kontakt">Kontakt</a>
-      </nav>
-    </div>
+    <nav class="nav-body" id="navBody" aria-label="Hauptnavigation">
+      <a class="nav-link" data-route="home" href="#/">Home</a>
+      <a class="nav-link" data-route="mitglied" href="#/mitglied-werden">Mitglied werden</a>
+      <a class="nav-link" data-route="projekte" href="#/projekte">Projekte</a>
+      <a class="nav-link" data-route="wer" href="#/wer-wir-sind">Wer wir sind</a>
+      <a class="nav-link" data-route="geschichte" href="#/geschichte">Geschichte</a>
+      <a class="nav-link" data-route="impressionen" href="#/impressionen">Impressionen</a>
+      <a class="nav-link" data-route="kontakt" href="#/kontakt">Kontakt</a>
+    </nav>
+  </div>
 </header>
 
 <div class="app">

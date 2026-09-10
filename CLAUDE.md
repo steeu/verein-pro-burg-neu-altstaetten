@@ -84,8 +84,10 @@ Bestehende Navigation, in dieser Reihenfolge:
 | Kontakt | `/kontakt/` | übernehmen |
 
 > Die Navigation liegt im Neuaufbau als **horizontale Header-Leiste** oben
-> (früher eine Seitenleiste links); unter 860 px klappt sie zum
-> Hamburger-Menü. Im Menü sind drei Labels gekürzt — «Projekte», «Wer wir
+> (früher eine Seitenleiste links): links die Wortmarke **«Burgverein»**
+> (`.brand`, verlinkt auf Home), rechts die Menüpunkte. Unter **1024 px**
+> klappt sie zum Hamburger-Menü (Wortmarke links, Icon rechts, Dropdown über
+> die volle Breite). Im Menü sind drei Labels gekürzt — «Projekte», «Wer wir
 > sind», «Geschichte» —, die vollen Seitentitel (`data-title`, `<title>`,
 > Eyebrow/H2 der Seite) bleiben unverändert.
 
@@ -333,10 +335,10 @@ abgeschaltet wird. Danach sind die Quell-URLs wertlos.
 Die URLs enthalten Transformationsparameter (`dimension=370x1024:format=jpg`).
 Für die Originalauflösung `transf/none/` statt `transf/dimension=…/` einsetzen.
 
-**Vereinslogo** — liegt als [`bilder/logo.png`](bilder/logo.png) im Repo, wird
-aktuell aber **nirgends auf der Seite angezeigt** (Wortmarke über der
-Navigation auf Wunsch entfernt, da der volle Vereinsname bereits im
-Willkommenstext steht). Datei bleibt für spätere Verwendung erhalten.
+**Vereinslogo** — die Bilddatei [`bilder/logo.png`](bilder/logo.png) liegt im
+Repo, wird aber **nicht** angezeigt. Im Header steht stattdessen die
+Text-Wortmarke «Burgverein» (Fraunces). Die PNG bleibt für spätere Verwendung
+erhalten.
 `https://image.jimcdn.com/app/cms/image/transf/none/path/s4e9a2fd3ee5d78b9/image/i7c488228ee697ba9/version/1526791918/image.png`
 
 **Hintergrund- / Open-Graph-Bild (2000×1500)**
@@ -515,13 +517,15 @@ und allen Bildern unter [`bilder/`](bilder/). Kein Build-Schritt nötig — die
 Datei lässt sich direkt im Browser öffnen und genauso direkt über GitHub
 Pages ausliefern, weil Hash-Routing ohne Server-Konfiguration funktioniert.
 
-**Header:** horizontale Navileiste oben, in **beiden Themes dunkel**
-(Burgstein, `--header-*`-Tokens) — heller Off-White-Text, aktiver Link in
-hellem Messing mit dezenter Pille; Hamburger-Menü und mobiles Dropdown
-ebenfalls dunkel. Im Dark Mode ist der Header noch etwas dunkler als der
-Body, damit er als eigene Leiste lesbar bleibt. `theme-color` = `#211812`.
-Alle Inhaltsseiten laufen auf einheitliche `--content-max` (820 px), der
-Footer zentriert bündig darunter.
+**Header:** volle Viewport-Breite, in **beiden Themes dunkel** (Burgstein,
+`--header-*`-Tokens). Links die Wortmarke «Burgverein», rechts die Menüpunkte
+(heller Off-White-Text, aktiver Link in hellem Messing mit dezenter Pille).
+Unter 1024 px klappt die Navigation zum Hamburger-Menü (Wortmarke links, Icon
+rechts); Dropdown und Icon ebenfalls dunkel. Der Inhalt der Leiste
+(`.header-inner`) ist auf 1180 px zentriert, die dunkle Fläche läuft randlos.
+Im Dark Mode ist der Header noch etwas dunkler als der Body. `theme-color` =
+`#211812`. Alle Inhaltsseiten laufen auf einheitliche `--content-max`
+(820 px), der Footer zentriert bündig darunter.
 
 **Favicon:** minimales, generisches Burg-Icon (bewusst **nicht** an die Burg
 Neu-Altstätten angelehnt) — ein Zinnenturm mit drei Zinnen und einem
